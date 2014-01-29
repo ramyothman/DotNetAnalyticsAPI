@@ -1,0 +1,467 @@
+<?xml version="1.0"?>
+<DataItems>
+  <DataCategory Name="Visitor">
+    <ItemType Name="Dimensions" Value="1">
+      <DataItem Name="visitorType" APICommand="ga:visitorType" WebViewName="Visitor Type" AppViewName="Active User Type" DataType="STRING" AllowedInSegments="True">A boolean indicating if a visitor is new or returning. Possible values: New Visitor, Returning Visitor.</DataItem>
+      <DataItem Name="visitCount" APICommand="ga:visitCount" WebViewName="Count of Visits" AppViewName="Count of Sessions" DataType="STRING" AllowedInSegments="True">The visit index for a visitor to your property. Each visit from a unique visitor will get its own incremental index starting from 1 for the first visit. Subsequent visits do not change previous visit indicies. For example, if a certain visitor has 4 visits to your website, visitCount for that visitor will have 4 distinct values of 1 through 4.</DataItem>
+      <DataItem Name="daysSinceLastVisit" APICommand="ga:daysSinceLastVisit" WebViewName="Days Since Last Visit" AppViewName="Days Since Last Session" DataType="STRING" AllowedInSegments="True">The number of days elapsed since visitors last visited your property. Used to calculate visitor loyalty.</DataItem>
+      <DataItem Name="userDefinedValue" APICommand="ga:userDefinedValue" WebViewName="User Defined Value" AppViewName="" DataType="STRING" AllowedInSegments="True">The value provided when you define custom visitor segments for your property.</DataItem>
+    </ItemType>
+    <ItemType Name="Metrics" Value="2">
+      <DataItem Name="visitors" APICommand="ga:visitors" WebViewName="Unique Visitors" AppViewName="Active Users" DataType="INTEGER" AllowedInSegments="False">Total number of visitors to your property for the requested time period.</DataItem>
+      <DataItem Name="newVisits" APICommand="ga:newVisits" WebViewName="New Visits" AppViewName="New Users" DataType="INTEGER" AllowedInSegments="True">The number of visitors whose visit to your property was marked as a first-time visit.</DataItem>
+    </ItemType>
+    <ItemType Name="Calculated" Value="3">
+      <DataItem Name="percentNewVisits" APICommand="ga:percentNewVisits" WebViewName="% New Visits" AppViewName="% New Sessions" DataType="PERCENT" AllowedInSegments="False">The percentage of visits by people who had never visited your property before. (ga:newVisits / ga:visits ) </DataItem>
+    </ItemType>
+  </DataCategory>
+  <DataCategory Name="Session">
+    <ItemType Name="Dimensions" Value="1">
+      <DataItem Name="visitLength" APICommand="ga:visitLength" WebViewName="Visit Duration" AppViewName="Session Duration" DataType="STRING" AllowedInSegments="True">The length of a visit to your property measured in seconds and reported in second increments. The value returned is a string.</DataItem>
+    </ItemType>
+    <ItemType Name="Metrics" Value="2">
+      <DataItem Name="visits" APICommand="ga:visits" WebViewName="Visits" AppViewName="Sessions" DataType="INTEGER" AllowedInSegments="True">Counts the total number of sessions.</DataItem>
+      <DataItem Name="bounces" APICommand="ga:bounces" WebViewName="Bounces" AppViewName="" DataType="INTEGER" AllowedInSegments="True">The total number of single page (or single engagement hit) sessions for your property.</DataItem>
+      <DataItem Name="timeOnSite" APICommand="ga:timeOnSite" WebViewName="Visit Duration" AppViewName="Session Duration" DataType="TIME" AllowedInSegments="True">The total duration of visitor sessions represented in total seconds.</DataItem>
+    </ItemType>
+    <ItemType Name="Calculated" Value="3">
+      <DataItem Name="visitBounceRate" APICommand="ga:visitBounceRate" WebViewName="Bounce Rate" AppViewName="" DataType="PERCENT" AllowedInSegments="False">The percentage of single-page visits (i.e., visits in which the person left your property from the first page). (ga:bounces / ga:visits ) </DataItem>
+      <DataItem Name="avgTimeOnSite" APICommand="ga:avgTimeOnSite" WebViewName="Avg. Visit Duration" AppViewName="Avg. Session Duration" DataType="TIME" AllowedInSegments="False">The average duration visitor sessions represented in total seconds. (ga:timeOnSite / ga:visits ) </DataItem>
+    </ItemType>
+  </DataCategory>
+  <DataCategory Name="Traffic Sources">
+    <ItemType Name="Dimensions" Value="1">
+      <DataItem Name="referralPath" APICommand="ga:referralPath" WebViewName="Referral Path" AppViewName="" DataType="STRING" AllowedInSegments="True">The path of the referring URL (e.g. document.referrer). If someone places a link to your property on their website, this element contains the path of the page that contains the referring link.</DataItem>
+      <DataItem Name="fullReferrer" APICommand="ga:fullReferrer" WebViewName="Full Referrer" AppViewName="" DataType="STRING" AllowedInSegments="False">The full referring URL including the hostname and path.</DataItem>
+      <DataItem Name="campaign" APICommand="ga:campaign" WebViewName="Campaign" AppViewName="" DataType="STRING" AllowedInSegments="True">When using manual campaign tracking, the value of the utm_campaign campaign tracking parameter. When using AdWords autotagging, the name(s) of the online ad campaign that you use for your property. Otherwise the value (not set) is used.</DataItem>
+      <DataItem Name="source" APICommand="ga:source" WebViewName="Source" AppViewName="" DataType="STRING" AllowedInSegments="True">The source of referrals to your property. When using manual campaign tracking, the value of the utm_source campaign tracking parameter. When using AdWords autotagging, the value is google. Otherwise the domain of the source referring the visitor to your property (e.g. document.referrer). The value may also contain a port address. If the visitor arrived without a referrer, the value is (direct)</DataItem>
+      <DataItem Name="medium" APICommand="ga:medium" WebViewName="Medium" AppViewName="" DataType="STRING" AllowedInSegments="True">The type of referrals to your property. When using manual campaign tracking, the value of the utm_medium campaign tracking parameter. When using AdWords autotagging, the value is ppc. If the user comes from a search engine detected by Google Analytics, the value is organic. If the referrer is not a search engine, the value is referral. If the visitor came directly to the property, and document.referrer is empty, the value is (none).</DataItem>
+      <DataItem Name="sourceMedium" APICommand="ga:sourceMedium" WebViewName="Source / Medium" AppViewName="" DataType="STRING" AllowedInSegments="True">Combined values of ga:source and ga:medium.</DataItem>
+      <DataItem Name="keyword" APICommand="ga:keyword" WebViewName="Keyword" AppViewName="" DataType="STRING" AllowedInSegments="True">When using manual campaign tracking, the value of the utm_term campaign tracking parameter. When using AdWords autotagging or if a visitor used organic search to reach your property, the keywords used by visitors to reach your property. Otherwise the value is (not set).</DataItem>
+      <DataItem Name="adContent" APICommand="ga:adContent" WebViewName="Ad Content" AppViewName="" DataType="STRING" AllowedInSegments="True">When using manual campaign tracking, the value of the utm_content campaign tracking parameter. When using AdWords autotagging, the first line of the text for your online Ad campaign. If you are using mad libs for your AdWords content, this field displays the keywords you provided for the mad libs keyword match. Otherwise the value is (not set)</DataItem>
+      <DataItem Name="socialNetwork" APICommand="ga:socialNetwork" WebViewName="Social Network" AppViewName="" DataType="STRING" AllowedInSegments="False">Name of the social network. This can be related to the referring social network for traffic sources, or to the social network for social data hub activities. E.g. Google+, Blogger, etc.</DataItem>
+      <DataItem Name="hasSocialSourceReferral" APICommand="ga:hasSocialSourceReferral" WebViewName="Social Source Referral" AppViewName="" DataType="STRING" AllowedInSegments="False">Indicates visits that arrived to the property from a social source. The possible values are Yes or No where the first letter is capitalized.</DataItem>
+    </ItemType>
+    <ItemType Name="Metrics" Value="2">
+      <DataItem Name="organicSearches" APICommand="ga:organicSearches" WebViewName="Organic Searches" AppViewName="" DataType="INTEGER" AllowedInSegments="False">The number of organic searches that happened within a session. This metric is search engine agnostic.</DataItem>
+    </ItemType>
+    <ItemType Name="Calculated" Value="3" />
+  </DataCategory>
+  <DataCategory Name="Adwords">
+    <ItemType Name="Dimensions" Value="1">
+      <DataItem Name="adGroup" APICommand="ga:adGroup" WebViewName="Ad Group" AppViewName="" DataType="STRING" AllowedInSegments="True">The name of your AdWords ad group.</DataItem>
+      <DataItem Name="adSlot" APICommand="ga:adSlot" WebViewName="Ad Slot" AppViewName="" DataType="STRING" AllowedInSegments="True">The location of the advertisement on the hosting page (Top, RHS, or not set).</DataItem>
+      <DataItem Name="adSlotPosition" APICommand="ga:adSlotPosition" WebViewName="Ad Slot Position" AppViewName="" DataType="STRING" AllowedInSegments="True">The ad slot positions in which your AdWords ads appeared (1-8).</DataItem>
+      <DataItem Name="adDistributionNetwork" APICommand="ga:adDistributionNetwork" WebViewName="Ad Distribution Network" AppViewName="" DataType="STRING" AllowedInSegments="False">The networks used to deliver your ads (Content, Search, Search partners, etc.).</DataItem>
+      <DataItem Name="adMatchType" APICommand="ga:adMatchType" WebViewName="Query Match Type" AppViewName="" DataType="STRING" AllowedInSegments="False">The match types applied for the search term the user had input(Phrase, Exact, Broad, etc.). Ads on the content network are identified as Content network. Details: 
+https://support.google.com/adwords/answer/2472708?hl=en
+</DataItem>
+      <DataItem Name="adKeywordMatchType" APICommand="ga:adKeywordMatchType" WebViewName="Keyword Match Type" AppViewName="" DataType="STRING" AllowedInSegments="False">The match types applied to your keywords (Phrase, Exact, Broad). Details: 
+https://support.google.com/adwords/answer/2472708?hl=en
+</DataItem>
+      <DataItem Name="adMatchedQuery" APICommand="ga:adMatchedQuery" WebViewName="Matched Search Query" AppViewName="" DataType="STRING" AllowedInSegments="False">The search queries that triggered impressions of your AdWords ads.</DataItem>
+      <DataItem Name="adPlacementDomain" APICommand="ga:adPlacementDomain" WebViewName="Placement Domain" AppViewName="" DataType="STRING" AllowedInSegments="False">The domains where your ads on the content network were placed.</DataItem>
+      <DataItem Name="adPlacementUrl" APICommand="ga:adPlacementUrl" WebViewName="Placement URL" AppViewName="" DataType="STRING" AllowedInSegments="False">The URLs where your ads on the content network were placed.</DataItem>
+      <DataItem Name="adFormat" APICommand="ga:adFormat" WebViewName="Ad Format" AppViewName="" DataType="STRING" AllowedInSegments="False">Your AdWords ad formats (Text, Image, Flash, Video, etc.).</DataItem>
+      <DataItem Name="adTargetingType" APICommand="ga:adTargetingType" WebViewName="Targeting Type" AppViewName="" DataType="STRING" AllowedInSegments="False">How your AdWords ads were targeted (keyword, placement, and vertical targeting, etc.).</DataItem>
+      <DataItem Name="adTargetingOption" APICommand="ga:adTargetingOption" WebViewName="Placement Type" AppViewName="" DataType="STRING" AllowedInSegments="False">How you manage your ads on the content network. Values are Automatic placements or Managed placements.</DataItem>
+      <DataItem Name="adDisplayUrl" APICommand="ga:adDisplayUrl" WebViewName="Display URL" AppViewName="" DataType="STRING" AllowedInSegments="False">The URLs your AdWords ads displayed.</DataItem>
+      <DataItem Name="adDestinationUrl" APICommand="ga:adDestinationUrl" WebViewName="Destination URL" AppViewName="" DataType="STRING" AllowedInSegments="False">The URLs to which your AdWords ads referred traffic.</DataItem>
+      <DataItem Name="adwordsCustomerID" APICommand="ga:adwordsCustomerID" WebViewName="AdWords Customer ID" AppViewName="" DataType="STRING" AllowedInSegments="False">A string. Corresponds to AdWords API AccountInfo.customerId.</DataItem>
+      <DataItem Name="adwordsCampaignID" APICommand="ga:adwordsCampaignID" WebViewName="AdWords Campaign ID" AppViewName="" DataType="STRING" AllowedInSegments="False">A string. Corresponds to AdWords API Campaign.id.</DataItem>
+      <DataItem Name="adwordsAdGroupID" APICommand="ga:adwordsAdGroupID" WebViewName="AdWords Ad Group ID" AppViewName="" DataType="STRING" AllowedInSegments="False">A string. Corresponds to AdWords API AdGroup.id.</DataItem>
+      <DataItem Name="adwordsCreativeID" APICommand="ga:adwordsCreativeID" WebViewName="AdWords Creative ID" AppViewName="" DataType="STRING" AllowedInSegments="False">A string. Corresponds to AdWords API Ad.id.</DataItem>
+      <DataItem Name="adwordsCriteriaID" APICommand="ga:adwordsCriteriaID" WebViewName="AdWords Criteria ID" AppViewName="" DataType="STRING" AllowedInSegments="False">A string. Corresponds to AdWords API Criterion.id.</DataItem>
+    </ItemType>
+    <ItemType Name="Metrics" Value="2">
+      <DataItem Name="impressions" APICommand="ga:impressions" WebViewName="Impressions" AppViewName="" DataType="INTEGER" AllowedInSegments="False">Total number of campaign impressions.</DataItem>
+      <DataItem Name="adClicks" APICommand="ga:adClicks" WebViewName="Clicks" AppViewName="" DataType="INTEGER" AllowedInSegments="False">The total number of times users have clicked on an ad to reach your property.</DataItem>
+      <DataItem Name="adCost" APICommand="ga:adCost" WebViewName="Cost" AppViewName="" DataType="CURRENCY" AllowedInSegments="False">Derived cost for the advertising campaign. The currency for this value is based on the currency that you set in your AdWords account.</DataItem>
+    </ItemType>
+    <ItemType Name="Calculated" Value="3">
+      <DataItem Name="CPM" APICommand="ga:CPM" WebViewName="CPM" AppViewName="" DataType="CURRENCY" AllowedInSegments="False">Cost per thousand impressions. (ga:adCost / (ga:impressions / 1000) ) </DataItem>
+      <DataItem Name="CPC" APICommand="ga:CPC" WebViewName="CPC" AppViewName="" DataType="CURRENCY" AllowedInSegments="False">Cost to advertiser per click. (ga:adCost / ga:adClicks ) </DataItem>
+      <DataItem Name="CTR" APICommand="ga:CTR" WebViewName="CTR" AppViewName="" DataType="PERCENT" AllowedInSegments="False">Click-through-rate for your ad. This is equal to the number of clicks divided by the number of impressions for your ad (e.g. how many times users clicked on one of your ads where that ad appeared). (ga:adClicks / ga:impressions ) </DataItem>
+      <DataItem Name="costPerTransaction" APICommand="ga:costPerTransaction" WebViewName="Cost per Transaction" AppViewName="" DataType="CURRENCY" AllowedInSegments="False">The cost per transaction for your property. ((ga:adCost) / (ga:transactions) ) </DataItem>
+      <DataItem Name="costPerGoalConversion" APICommand="ga:costPerGoalConversion" WebViewName="Cost per Goal Conversion" AppViewName="" DataType="CURRENCY" AllowedInSegments="False">The cost per goal conversion for your property. ((ga:adCost) / (ga:goalCompletionsAll) ) </DataItem>
+      <DataItem Name="costPerConversion" APICommand="ga:costPerConversion" WebViewName="Cost per Conversion" AppViewName="" DataType="CURRENCY" AllowedInSegments="False">The cost per conversion (including ecommerce and goal conversions) for your property. ((ga:adCost) / (ga:transactions  +  ga:goalCompletionsAll) ) </DataItem>
+      <DataItem Name="RPC" APICommand="ga:RPC" WebViewName="RPC" AppViewName="" DataType="CURRENCY" AllowedInSegments="False">RPC or revenue-per-click is the average revenue (from ecommerce sales and/or goal value) you received for each click on one of your search ads. ((ga:transactionRevenue + ga:goalValueAll) / ga:adClicks ) </DataItem>
+      <DataItem Name="ROI" APICommand="ga:ROI" WebViewName="ROI" AppViewName="" DataType="PERCENT" AllowedInSegments="False">Returns on Investment is overall transaction profit divided by derived advertising cost. ((ga:transactionRevenue + ga:goalValueAll - ga:adCost) / ga:adCost ) </DataItem>
+      <DataItem Name="margin" APICommand="ga:margin" WebViewName="Margin" AppViewName="" DataType="PERCENT" AllowedInSegments="False">The overall transaction profit margin. ((ga:transactionRevenue + ga:goalValueAll - ga:adCost) / (ga:transactionRevenue + ga:goalValueAll) ) </DataItem>
+    </ItemType>
+  </DataCategory>
+  <DataCategory Name="Goal Conversions">
+    <ItemType Name="Dimensions" Value="1">
+      <DataItem Name="goalCompletionLocation" APICommand="ga:goalCompletionLocation" WebViewName="Goal Completion Location" AppViewName="" DataType="STRING" AllowedInSegments="False">The page path or screen name that matched any destination type goal completion.</DataItem>
+      <DataItem Name="goalPreviousStep1" APICommand="ga:goalPreviousStep1" WebViewName="Goal Previous Step - 1" AppViewName="" DataType="STRING" AllowedInSegments="False">The page path or screen name that matched any destination type goal, one step prior to the goal completion location.</DataItem>
+      <DataItem Name="goalPreviousStep2" APICommand="ga:goalPreviousStep2" WebViewName="Goal Previous Step - 2" AppViewName="" DataType="STRING" AllowedInSegments="False">The page path or screen name that matched any destination type goal, two steps prior to the goal completion location.</DataItem>
+      <DataItem Name="goalPreviousStep3" APICommand="ga:goalPreviousStep3" WebViewName="Goal Previous Step - 3" AppViewName="" DataType="STRING" AllowedInSegments="False">The page path or screen name that matched any destination type goal, three steps prior to the goal completion location.</DataItem>
+    </ItemType>
+    <ItemType Name="Metrics" Value="2">
+      <DataItem Name="goalXXStarts" APICommand="ga:goalXXStarts" WebViewName="Goal 1 Starts" AppViewName="" DataType="INTEGER" AllowedInSegments="True">The total number of starts for the requested goal number.</DataItem>
+      <DataItem Name="goalStartsAll" APICommand="ga:goalStartsAll" WebViewName="Goal Starts" AppViewName="" DataType="INTEGER" AllowedInSegments="True">The total number of starts for all goals defined for your profile.</DataItem>
+      <DataItem Name="goalXXCompletions" APICommand="ga:goalXXCompletions" WebViewName="Goal 1 Completions" AppViewName="" DataType="INTEGER" AllowedInSegments="True">The total number of completions for the requested goal number.</DataItem>
+      <DataItem Name="goalCompletionsAll" APICommand="ga:goalCompletionsAll" WebViewName="Goal Completions" AppViewName="" DataType="INTEGER" AllowedInSegments="True">The total number of completions for all goals defined for your profile.</DataItem>
+      <DataItem Name="goalXXValue" APICommand="ga:goalXXValue" WebViewName="Goal 1 Value" AppViewName="" DataType="CURRENCY" AllowedInSegments="True">The total numeric value for the requested goal number.</DataItem>
+      <DataItem Name="goalValueAll" APICommand="ga:goalValueAll" WebViewName="Goal Value" AppViewName="" DataType="CURRENCY" AllowedInSegments="True">The total numeric value for all goals defined for your profile.</DataItem>
+    </ItemType>
+    <ItemType Name="Calculated" Value="3">
+      <DataItem Name="goalValuePerVisit" APICommand="ga:goalValuePerVisit" WebViewName="Per Visit Goal Value" AppViewName="Per Session Goal Value" DataType="CURRENCY" AllowedInSegments="False">The average goal value of a visit to your property. ((ga:goalValueAll / ga:visits) ) </DataItem>
+      <DataItem Name="goalXXConversionRate" APICommand="ga:goalXXConversionRate" WebViewName="Goal 1 Conversion Rate" AppViewName="" DataType="PERCENT" AllowedInSegments="False">The percentage of visits which resulted in a conversion to the requested goal number. (ga:goalXXCompletions / ga:visits ) </DataItem>
+      <DataItem Name="goalConversionRateAll" APICommand="ga:goalConversionRateAll" WebViewName="Goal Conversion Rate" AppViewName="" DataType="PERCENT" AllowedInSegments="False">The percentage of visits which resulted in a conversion to at least one of your goals. (ga:goalCompletionsAll / ga:visits ) </DataItem>
+      <DataItem Name="goalXXAbandons" APICommand="ga:goalXXAbandons" WebViewName="Goal 1 Abandoned Funnels" AppViewName="" DataType="INTEGER" AllowedInSegments="False">The number of times visitors started conversion activity on the requested goal number without actually completing it. ((ga:goalXXStarts - ga:goalXXCompletions) ) </DataItem>
+      <DataItem Name="goalAbandonsAll" APICommand="ga:goalAbandonsAll" WebViewName="Abandoned Funnels" AppViewName="" DataType="INTEGER" AllowedInSegments="False">The overall number of times visitors started goals without actually completing them. ((ga:goalStartsAll - ga:goalCompletionsAll) ) </DataItem>
+      <DataItem Name="goalXXAbandonRate" APICommand="ga:goalXXAbandonRate" WebViewName="Goal 1 Abandonment Rate" AppViewName="" DataType="PERCENT" AllowedInSegments="False">The rate at which the requested goal number was abandoned. (((ga:goalXXStarts - ga:goalXXCompletions)) / (ga:goalXXStarts) ) </DataItem>
+      <DataItem Name="goalAbandonRateAll" APICommand="ga:goalAbandonRateAll" WebViewName="Total Abandonment Rate" AppViewName="" DataType="PERCENT" AllowedInSegments="False">The rate at which goals were abandoned. (((ga:goalStartsAll - ga:goalCompletionsAll)) / (ga:goalStartsAll) ) </DataItem>
+    </ItemType>
+  </DataCategory>
+  <DataCategory Name="Platform or Device">
+    <ItemType Name="Dimensions" Value="1">
+      <DataItem Name="browser" APICommand="ga:browser" WebViewName="Browser" AppViewName="" DataType="STRING" AllowedInSegments="True">The names of browsers used by visitors to your website. For example, Internet Explorer or Firefox.</DataItem>
+      <DataItem Name="browserVersion" APICommand="ga:browserVersion" WebViewName="Browser Version" AppViewName="" DataType="STRING" AllowedInSegments="True">The browser versions used by visitors to your website. For example, 2.0.0.14</DataItem>
+      <DataItem Name="operatingSystem" APICommand="ga:operatingSystem" WebViewName="Operating System" AppViewName="" DataType="STRING" AllowedInSegments="True">The operating system used by your visitors. For example, Windows, Linux , Macintosh, iPhone, iPod.</DataItem>
+      <DataItem Name="operatingSystemVersion" APICommand="ga:operatingSystemVersion" WebViewName="Operating System Version" AppViewName="" DataType="STRING" AllowedInSegments="True">The version of the operating system used by your visitors, such as XP for Windows or PPC for Macintosh.</DataItem>
+      <DataItem Name="mobileDeviceBranding" APICommand="ga:mobileDeviceBranding" WebViewName="Mobile Device Branding" AppViewName="" DataType="STRING" AllowedInSegments="True">Mobile manufacturer or branded name.</DataItem>
+      <DataItem Name="mobileDeviceModel" APICommand="ga:mobileDeviceModel" WebViewName="Mobile Device Model" AppViewName="" DataType="STRING" AllowedInSegments="True">Mobile device model</DataItem>
+      <DataItem Name="mobileInputSelector" APICommand="ga:mobileInputSelector" WebViewName="Mobile Input Selector" AppViewName="" DataType="STRING" AllowedInSegments="True">Selector used on the mobile device (e.g.: touchscreen, joystick, clickwheel, stylus).</DataItem>
+      <DataItem Name="mobileDeviceInfo" APICommand="ga:mobileDeviceInfo" WebViewName="Mobile Device Info" AppViewName="" DataType="STRING" AllowedInSegments="True">The branding, model, and marketing name used to identify the mobile device.</DataItem>
+      <DataItem Name="mobileDeviceMarketingName" APICommand="ga:mobileDeviceMarketingName" WebViewName="Mobile Device Marketing Name" AppViewName="" DataType="STRING" AllowedInSegments="True">The marketing name used for the mobile device.</DataItem>
+      <DataItem Name="deviceCategory" APICommand="ga:deviceCategory" WebViewName="Device Category" AppViewName="" DataType="STRING" AllowedInSegments="True">The type of device: desktop, tablet, or mobile.</DataItem>
+    </ItemType>
+    <ItemType Name="Metrics" Value="2" />
+    <ItemType Name="Calculated" Value="3" />
+  </DataCategory>
+  <DataCategory Name="Geo Network">
+    <ItemType Name="Dimensions" Value="1">
+      <DataItem Name="continent" APICommand="ga:continent" WebViewName="Continent" AppViewName="" DataType="STRING" AllowedInSegments="True">The continents of property visitors, derived from IP addresses.</DataItem>
+      <DataItem Name="subContinent" APICommand="ga:subContinent" WebViewName="Sub Continent Region" AppViewName="" DataType="STRING" AllowedInSegments="True">The sub-continent of visitors, derived from IP addresses. For example, Polynesia or Northern Europe.</DataItem>
+      <DataItem Name="country" APICommand="ga:country" WebViewName="Country / Territory" AppViewName="" DataType="STRING" AllowedInSegments="True">The countries of website visitors, derived from IP addresses.</DataItem>
+      <DataItem Name="region" APICommand="ga:region" WebViewName="Region" AppViewName="" DataType="STRING" AllowedInSegments="True">The region of visitors to your property, derived from IP addresses. In the U.S., a region is a state, such as New York.</DataItem>
+      <DataItem Name="metro" APICommand="ga:metro" WebViewName="Metro" AppViewName="" DataType="STRING" AllowedInSegments="True">The Designated Market Area (DMA) from where traffic arrived on your property.</DataItem>
+      <DataItem Name="city" APICommand="ga:city" WebViewName="City" AppViewName="" DataType="STRING" AllowedInSegments="True">The cities of property visitors, derived from IP addresses.</DataItem>
+      <DataItem Name="latitude" APICommand="ga:latitude" WebViewName="Latitude" AppViewName="" DataType="STRING" AllowedInSegments="False">The approximate latitude of the visitors city. Derived from IP address. Locations north of the equator are represented by positive values and locations south of the equator by negative values.</DataItem>
+      <DataItem Name="longitude" APICommand="ga:longitude" WebViewName="Longitude" AppViewName="" DataType="STRING" AllowedInSegments="False">The approximate longitude of the visitors city. Derived from IP address. Locations east of the meridian are represented by positive values and locations west of the meridian by negative values.</DataItem>
+      <DataItem Name="networkDomain" APICommand="ga:networkDomain" WebViewName="Network Domain" AppViewName="" DataType="STRING" AllowedInSegments="True">The domain name of the ISPs used by visitors to your property. This is derived from the domain name registered to the IP address.</DataItem>
+      <DataItem Name="networkLocation" APICommand="ga:networkLocation" WebViewName="Service Provider" AppViewName="" DataType="STRING" AllowedInSegments="True">The name of service providers used to reach your property. For example, if most visitors to your website come via the major service providers for cable internet, you will see the names of those cable service providers in this element.</DataItem>
+    </ItemType>
+    <ItemType Name="Metrics" Value="2" />
+    <ItemType Name="Calculated" Value="3" />
+  </DataCategory>
+  <DataCategory Name="System">
+    <ItemType Name="Dimensions" Value="1">
+      <DataItem Name="flashVersion" APICommand="ga:flashVersion" WebViewName="Flash Version" AppViewName="" DataType="STRING" AllowedInSegments="True">The versions of Flash supported by visitors browsers, including minor versions.</DataItem>
+      <DataItem Name="javaEnabled" APICommand="ga:javaEnabled" WebViewName="Java Support" AppViewName="" DataType="STRING" AllowedInSegments="True">Indicates Java support for visitors browsers. The possible values are Yes or No where the first letter must be capitalized.</DataItem>
+      <DataItem Name="language" APICommand="ga:language" WebViewName="Language" AppViewName="" DataType="STRING" AllowedInSegments="True">The language provided by the HTTP Request for the browser. Values are given as an ISO-639 code (e.g. en-gb for British English).</DataItem>
+      <DataItem Name="screenColors" APICommand="ga:screenColors" WebViewName="Screen Colors" AppViewName="" DataType="STRING" AllowedInSegments="True">The color depth of visitors monitors, as retrieved from the DOM of the visitors browser. For example 4-bit, 8-bit, 24-bit, or undefined-bit.</DataItem>
+      <DataItem Name="screenResolution" APICommand="ga:screenResolution" WebViewName="Screen Resolution" AppViewName="" DataType="STRING" AllowedInSegments="True">The screen resolution of visitors monitors, as retrieved from the DOM of the visitors browser. For example: 1024x738.</DataItem>
+    </ItemType>
+    <ItemType Name="Metrics" Value="2" />
+    <ItemType Name="Calculated" Value="3" />
+  </DataCategory>
+  <DataCategory Name="Social Activities">
+    <ItemType Name="Dimensions" Value="1">
+      <DataItem Name="socialActivityEndorsingUrl" APICommand="ga:socialActivityEndorsingUrl" WebViewName="Endorsing URL" AppViewName="" DataType="STRING" AllowedInSegments="False">For a social data hub activity, this value represents the URL of the social activity (e.g. the Google+ post URL, the blog comment URL, etc.)</DataItem>
+      <DataItem Name="socialActivityDisplayName" APICommand="ga:socialActivityDisplayName" WebViewName="Display Name" AppViewName="" DataType="STRING" AllowedInSegments="False">For a social data hub activity, this value represents the title of the social activity posted by the social network user.</DataItem>
+      <DataItem Name="socialActivityPost" APICommand="ga:socialActivityPost" WebViewName="Social Activity Post" AppViewName="" DataType="STRING" AllowedInSegments="False">For a social data hub activity, this value represents the content of the social activity posted by the social network user (e.g. The message content of a Google+ post)</DataItem>
+      <DataItem Name="socialActivityTimestamp" APICommand="ga:socialActivityTimestamp" WebViewName="Social Activity Timestamp" AppViewName="" DataType="STRING" AllowedInSegments="False">For a social data hub activity, this value represents when the social activity occurred on the social network.</DataItem>
+      <DataItem Name="socialActivityUserHandle" APICommand="ga:socialActivityUserHandle" WebViewName="Social User Handle" AppViewName="" DataType="STRING" AllowedInSegments="False">For a social data hub activity, this value represents the social network handle (e.g. name or ID) of the user who initiated the social activity.</DataItem>
+      <DataItem Name="socialActivityUserPhotoUrl" APICommand="ga:socialActivityUserPhotoUrl" WebViewName="User Photo URL" AppViewName="" DataType="STRING" AllowedInSegments="False">For a social data hub activity, this value represents the URL of the photo associated with the users social network profile.</DataItem>
+      <DataItem Name="socialActivityUserProfileUrl" APICommand="ga:socialActivityUserProfileUrl" WebViewName="User Profile URL" AppViewName="" DataType="STRING" AllowedInSegments="False">For a social data hub activity, this value represents the URL of the associated users social network profile.</DataItem>
+      <DataItem Name="socialActivityContentUrl" APICommand="ga:socialActivityContentUrl" WebViewName="Shared URL" AppViewName="" DataType="STRING" AllowedInSegments="False">For a social data hub activity, this value represents the URL shared by the associated social network user.</DataItem>
+      <DataItem Name="socialActivityTagsSummary" APICommand="ga:socialActivityTagsSummary" WebViewName="Social Tags Summary" AppViewName="" DataType="STRING" AllowedInSegments="False">For a social data hub activity, this is a comma-separated set of tags associated with the social activity.</DataItem>
+      <DataItem Name="socialActivityAction" APICommand="ga:socialActivityAction" WebViewName="Originating Social Action" AppViewName="" DataType="STRING" AllowedInSegments="False">For a social data hub activity, this value represents the type of social action associated with the activity (e.g. vote, comment, +1, etc.).</DataItem>
+      <DataItem Name="socialActivityNetworkAction" APICommand="ga:socialActivityNetworkAction" WebViewName="Social Network and Action" AppViewName="" DataType="STRING" AllowedInSegments="False">For a social data hub activity, this value represents the type of social action and the social network where the activity originated.</DataItem>
+    </ItemType>
+    <ItemType Name="Metrics" Value="2">
+      <DataItem Name="socialActivities" APICommand="ga:socialActivities" WebViewName="Data Hub Activities" AppViewName="" DataType="INTEGER" AllowedInSegments="False">The count of activities where a content URL was shared / mentioned on a social data hub partner network.</DataItem>
+    </ItemType>
+    <ItemType Name="Calculated" Value="3" />
+  </DataCategory>
+  <DataCategory Name="Page Tracking">
+    <ItemType Name="Dimensions" Value="1">
+      <DataItem Name="hostname" APICommand="ga:hostname" WebViewName="Hostname" AppViewName="" DataType="STRING" AllowedInSegments="True">The hostname from which the tracking request was made.</DataItem>
+      <DataItem Name="pagePath" APICommand="ga:pagePath" WebViewName="Page" AppViewName="" DataType="STRING" AllowedInSegments="True">A page on your website specified by path and/or query parameters. Use in conjunction with hostname to get the full URL of the page.</DataItem>
+      <DataItem Name="pagePathLevel1" APICommand="ga:pagePathLevel1" WebViewName="Page path level 1" AppViewName="" DataType="STRING" AllowedInSegments="False">This dimension rolls up all the page paths in the first hierarchical level in pagePath.</DataItem>
+      <DataItem Name="pagePathLevel2" APICommand="ga:pagePathLevel2" WebViewName="Page path level 2" AppViewName="" DataType="STRING" AllowedInSegments="False">This dimension rolls up all the page paths in the second hierarchical level in pagePath.</DataItem>
+      <DataItem Name="pagePathLevel3" APICommand="ga:pagePathLevel3" WebViewName="Page path level 3" AppViewName="" DataType="STRING" AllowedInSegments="False">This dimension rolls up all the page paths in the third hierarchical level in pagePath.</DataItem>
+      <DataItem Name="pagePathLevel4" APICommand="ga:pagePathLevel4" WebViewName="Page path level 4" AppViewName="" DataType="STRING" AllowedInSegments="False">This dimension rolls up all the page paths into hierarchical levels. Up to 4 pagePath levels maybe specified. All additional levels in the pagePath hierarchy are also rolled up in this dimension.</DataItem>
+      <DataItem Name="pageTitle" APICommand="ga:pageTitle" WebViewName="Page Title" AppViewName="" DataType="STRING" AllowedInSegments="True">The title of a page. Keep in mind that multiple pages might have the same page title.</DataItem>
+      <DataItem Name="landingPagePath" APICommand="ga:landingPagePath" WebViewName="Landing Page" AppViewName="" DataType="STRING" AllowedInSegments="True">The first page in a users session, or landing page.</DataItem>
+      <DataItem Name="secondPagePath" APICommand="ga:secondPagePath" WebViewName="Second Page" AppViewName="" DataType="STRING" AllowedInSegments="False">The second page in a users session.</DataItem>
+      <DataItem Name="exitPagePath" APICommand="ga:exitPagePath" WebViewName="Exit Page" AppViewName="" DataType="STRING" AllowedInSegments="True">The last page in a users session, or exit page.</DataItem>
+      <DataItem Name="previousPagePath" APICommand="ga:previousPagePath" WebViewName="Previous Page Path" AppViewName="" DataType="STRING" AllowedInSegments="False">A page on your property that was visited before another page on the same property. Typically used with the pagePath dimension.</DataItem>
+      <DataItem Name="nextPagePath" APICommand="ga:nextPagePath" WebViewName="Next Page Path" AppViewName="" DataType="STRING" AllowedInSegments="False">A page on your website that was visited after another page on your website. Typically used with the previousPagePath dimension.</DataItem>
+      <DataItem Name="pageDepth" APICommand="ga:pageDepth" WebViewName="Page Depth" AppViewName="" DataType="STRING" AllowedInSegments="True">The number of pages visited by visitors during a session (visit). The value is a histogram that counts pageviews across a range of possible values. In this calculation, all visits will have at least one pageview, and some percentage of visits will have more.</DataItem>
+    </ItemType>
+    <ItemType Name="Metrics" Value="2">
+      <DataItem Name="pageValue" APICommand="ga:pageValue" WebViewName="Page Value" AppViewName="" DataType="CURRENCY" AllowedInSegments="False">The average value of this page or set of pages. Page Value is (ga:transactionRevenue + ga:goalValueAll) / ga:uniquePageviews (for the page or set of pages).</DataItem>
+      <DataItem Name="entrances" APICommand="ga:entrances" WebViewName="Entrances" AppViewName="" DataType="INTEGER" AllowedInSegments="True">The number of entrances to your property measured as the first pageview in a session. Typically used with landingPagePath</DataItem>
+      <DataItem Name="pageviews" APICommand="ga:pageviews" WebViewName="Pageviews" AppViewName="" DataType="INTEGER" AllowedInSegments="True">The total number of pageviews for your property.</DataItem>
+      <DataItem Name="uniquePageviews" APICommand="ga:uniquePageviews" WebViewName="Unique Pageviews" AppViewName="" DataType="INTEGER" AllowedInSegments="True">The number of different (unique) pages within a session. This takes into both the pagePath and pageTitle to determine uniqueness.</DataItem>
+      <DataItem Name="timeOnPage" APICommand="ga:timeOnPage" WebViewName="Time on Page" AppViewName="" DataType="TIME" AllowedInSegments="True">How long a visitor spent on a particular page in seconds. Calculated by subtracting the initial view time for a particular page from the initial view time for a subsequent page. Thus, this metric does not apply to exit pages for your property.</DataItem>
+      <DataItem Name="exits" APICommand="ga:exits" WebViewName="Exits" AppViewName="" DataType="INTEGER" AllowedInSegments="True">The number of exits from your property.</DataItem>
+    </ItemType>
+    <ItemType Name="Calculated" Value="3">
+      <DataItem Name="entranceRate" APICommand="ga:entranceRate" WebViewName="Entrances / Pageviews" AppViewName="" DataType="PERCENT" AllowedInSegments="False">The percentage of pageviews in which this page was the entrance. (ga:entrances / ga:pageviews ) </DataItem>
+      <DataItem Name="pageviewsPerVisit" APICommand="ga:pageviewsPerVisit" WebViewName="Pages / Visit" AppViewName="" DataType="FLOAT" AllowedInSegments="False">The average number of pages viewed during a visit to your property. Repeated views of a single page are counted. (ga:pageviews / ga:visits ) </DataItem>
+      <DataItem Name="avgTimeOnPage" APICommand="ga:avgTimeOnPage" WebViewName="Avg. Time on Page" AppViewName="" DataType="TIME" AllowedInSegments="False">The average amount of time visitors spent viewing this page or a set of pages. (ga:timeOnPage / (ga:pageviews - ga:exits) ) </DataItem>
+      <DataItem Name="exitRate" APICommand="ga:exitRate" WebViewName="% Exit" AppViewName="" DataType="PERCENT" AllowedInSegments="False">The percentage of exits from your property that occurred out of the total page views. (ga:exits / (ga:pageviews + ga:screenviews) ) </DataItem>
+    </ItemType>
+  </DataCategory>
+  <DataCategory Name="Internal Search">
+    <ItemType Name="Dimensions" Value="1">
+      <DataItem Name="searchUsed" APICommand="ga:searchUsed" WebViewName="Site Search Status" AppViewName="" DataType="STRING" AllowedInSegments="True">A boolean to distinguish whether internal search was used in a session. Values are Visits With Site Search and Visits Without Site Search.</DataItem>
+      <DataItem Name="searchKeyword" APICommand="ga:searchKeyword" WebViewName="Search Term" AppViewName="" DataType="STRING" AllowedInSegments="True">Search terms used by visitors within your property.</DataItem>
+      <DataItem Name="searchKeywordRefinement" APICommand="ga:searchKeywordRefinement" WebViewName="Refined Keyword" AppViewName="" DataType="STRING" AllowedInSegments="True">Subsequent keyword search terms or strings entered by users after a given initial string search.</DataItem>
+      <DataItem Name="searchCategory" APICommand="ga:searchCategory" WebViewName="Site Search Category" AppViewName="" DataType="STRING" AllowedInSegments="True">The categories used for the internal search if you have this enabled for your profile. For example, you might have product categories such as electronics, furniture, or clothing.</DataItem>
+      <DataItem Name="searchStartPage" APICommand="ga:searchStartPage" WebViewName="Start Page" AppViewName="" DataType="STRING" AllowedInSegments="False">A page where the user initiated an internal search on your property.</DataItem>
+      <DataItem Name="searchDestinationPage" APICommand="ga:searchDestinationPage" WebViewName="Destination Page" AppViewName="" DataType="STRING" AllowedInSegments="False">A page that the user visited after performing an internal search on your property.</DataItem>
+    </ItemType>
+    <ItemType Name="Metrics" Value="2">
+      <DataItem Name="searchResultViews" APICommand="ga:searchResultViews" WebViewName="Results Pageviews" AppViewName="" DataType="INTEGER" AllowedInSegments="False">The number of times a search result page was viewed after performing a search.</DataItem>
+      <DataItem Name="searchUniques" APICommand="ga:searchUniques" WebViewName="Total Unique Searches" AppViewName="" DataType="INTEGER" AllowedInSegments="True">The total number of unique keywords from internal searches within a session. For example if shoes was searched for 3 times in a session, it will be only counted once.</DataItem>
+      <DataItem Name="searchVisits" APICommand="ga:searchVisits" WebViewName="Visits with Search" AppViewName="" DataType="INTEGER" AllowedInSegments="True">The total number of sessions that included an internal search</DataItem>
+      <DataItem Name="searchDepth" APICommand="ga:searchDepth" WebViewName="Search Depth" AppViewName="" DataType="INTEGER" AllowedInSegments="True">The average number of subsequent page views made on your property after a use of your internal search feature.</DataItem>
+      <DataItem Name="searchRefinements" APICommand="ga:searchRefinements" WebViewName="Search Refinements" AppViewName="" DataType="INTEGER" AllowedInSegments="True">The total number of times a refinement (transition) occurs between internal search keywords within a session. For example if the sequence of keywords is: shoes, shoes, pants, pants, this metric will be one because the transition between shoes and pants is different.</DataItem>
+      <DataItem Name="searchDuration" APICommand="ga:searchDuration" WebViewName="Time after Search" AppViewName="" DataType="TIME" AllowedInSegments="True">The visit duration to your property where a use of your internal search feature occurred.</DataItem>
+      <DataItem Name="searchExits" APICommand="ga:searchExits" WebViewName="Search Exits" AppViewName="" DataType="INTEGER" AllowedInSegments="True">The number of exits on your site that occurred following a search result from your internal search feature.</DataItem>
+    </ItemType>
+    <ItemType Name="Calculated" Value="3">
+      <DataItem Name="avgSearchResultViews" APICommand="ga:avgSearchResultViews" WebViewName="Results Pageviews / Search" AppViewName="" DataType="FLOAT" AllowedInSegments="False">The average number of times people viewed a search results page after performing a search. (ga:searchResultViews / ga:searchUniques ) </DataItem>
+      <DataItem Name="percentVisitsWithSearch" APICommand="ga:percentVisitsWithSearch" WebViewName="% Visits with Search" AppViewName="" DataType="PERCENT" AllowedInSegments="False">The percentage of visits with search. (ga:searchVisits / ga:visits ) </DataItem>
+      <DataItem Name="avgSearchDepth" APICommand="ga:avgSearchDepth" WebViewName="Search Depth" AppViewName="" DataType="FLOAT" AllowedInSegments="False">The average number of pages people viewed after performing a search on your property. (ga:searchDepth / ga:searchUniques ) </DataItem>
+      <DataItem Name="percentSearchRefinements" APICommand="ga:percentSearchRefinements" WebViewName="% Search Refinements" AppViewName="" DataType="PERCENT" AllowedInSegments="False">The percentage of number of times a refinement (i.e., transition) occurs between internal search keywords within a session. (ga:searchRefinements / ga:searchResultViews ) </DataItem>
+      <DataItem Name="avgSearchDuration" APICommand="ga:avgSearchDuration" WebViewName="Time after Search" AppViewName="" DataType="TIME" AllowedInSegments="False">The average amount of time people spent on your property after searching. (ga:searchDuration / ga:searchUniques ) </DataItem>
+      <DataItem Name="searchExitRate" APICommand="ga:searchExitRate" WebViewName="% Search Exits" AppViewName="" DataType="PERCENT" AllowedInSegments="False">The percentage of searches that resulted in an immediate exit from your property. (ga:searchExits / ga:searchUniques ) </DataItem>
+      <DataItem Name="searchGoalXXConversionRate" APICommand="ga:searchGoalXXConversionRate" WebViewName="Site Search Goal 1 Conversion Rate" AppViewName="" DataType="PERCENT" AllowedInSegments="False">The percentage of search visits (i.e., visits that included at least one search) which resulted in a conversion to the requested goal number. (ga:goalXXCompletions / ga:searchUniques ) </DataItem>
+      <DataItem Name="searchGoalConversionRateAll" APICommand="ga:searchGoalConversionRateAll" WebViewName="Site Search Goal Conversion Rate" AppViewName="" DataType="PERCENT" AllowedInSegments="False">The percentage of search visits (i.e., visits that included at least one search) which resulted in a conversion to at least one of your goals. (ga:goalCompletionsAll / ga:searchUniques ) </DataItem>
+      <DataItem Name="goalValueAllPerSearch" APICommand="ga:goalValueAllPerSearch" WebViewName="Per Search Goal Value" AppViewName="" DataType="CURRENCY" AllowedInSegments="False">The average goal value of a search on your property. (ga:goalValueAll / ga:searchUniques ) </DataItem>
+    </ItemType>
+  </DataCategory>
+  <DataCategory Name="Site Speed">
+    <ItemType Name="Dimensions" Value="1" />
+    <ItemType Name="Metrics" Value="2">
+      <DataItem Name="pageLoadTime" APICommand="ga:pageLoadTime" WebViewName="Page Load Time (ms)" AppViewName="" DataType="INTEGER" AllowedInSegments="False">Total Page Load Time is the amount of time (in milliseconds) it takes for pages from the sample set to load, from initiation of the pageview (e.g. click on a page link) to load completion in the browser.</DataItem>
+      <DataItem Name="pageLoadSample" APICommand="ga:pageLoadSample" WebViewName="Page Load Sample" AppViewName="" DataType="INTEGER" AllowedInSegments="False">The sample set (or count) of pageviews used to calculate the average page load time.</DataItem>
+      <DataItem Name="domainLookupTime" APICommand="ga:domainLookupTime" WebViewName="Domain Lookup Time (ms)" AppViewName="" DataType="INTEGER" AllowedInSegments="False">The total amount of time (in milliseconds) spent in DNS lookup for this page among all samples.</DataItem>
+      <DataItem Name="pageDownloadTime" APICommand="ga:pageDownloadTime" WebViewName="Page Download Time (ms)" AppViewName="" DataType="INTEGER" AllowedInSegments="False">The total amount of time (in milliseconds) to download this page among all samples.</DataItem>
+      <DataItem Name="redirectionTime" APICommand="ga:redirectionTime" WebViewName="Redirection Time (ms)" AppViewName="" DataType="INTEGER" AllowedInSegments="False">The total amount of time (in milliseconds) spent in redirects before fetching this page among all samples. If there are no redirects, the value for this metric is expected to be 0.</DataItem>
+      <DataItem Name="serverConnectionTime" APICommand="ga:serverConnectionTime" WebViewName="Server Connection Time (ms)" AppViewName="" DataType="INTEGER" AllowedInSegments="False">The total amount of time (in milliseconds) spent in establishing TCP connection for this page among all samples.</DataItem>
+      <DataItem Name="serverResponseTime" APICommand="ga:serverResponseTime" WebViewName="Server Response Time (ms)" AppViewName="" DataType="INTEGER" AllowedInSegments="False">The total amount of time (in milliseconds) your server takes to respond to a user request among all samples, including the network time from users location to your server.</DataItem>
+      <DataItem Name="speedMetricsSample" APICommand="ga:speedMetricsSample" WebViewName="Speed Metrics Sample" AppViewName="" DataType="INTEGER" AllowedInSegments="False">The sample set (or count) of pageviews used to calculate the averages for site speed metrics. This metric is used in all site speed average calculations including avgDomainLookupTime, avgPageDownloadTime, avgRedirectionTime, avgServerConnectionTime, and avgServerResponseTime.</DataItem>
+      <DataItem Name="domInteractiveTime" APICommand="ga:domInteractiveTime" WebViewName="Document Interactive Time (ms)" AppViewName="" DataType="INTEGER" AllowedInSegments="False">The time the browser takes (in milliseconds) to parse the document (DOMInteractive), including the network time from the users location to your server. At this time, the user can interact with the Document Object Model even though it is not fully loaded.</DataItem>
+      <DataItem Name="domContentLoadedTime" APICommand="ga:domContentLoadedTime" WebViewName="Document Content Loaded Time (ms)" AppViewName="" DataType="INTEGER" AllowedInSegments="False">The time the browser takes (in milliseconds) to parse the document and execute deferred and parser-inserted scripts (DOMContentLoaded), including the network time from the users location to your server. Parsing of the document is finished, the Document Object Model is ready, but referenced style sheets, images, and subframes may not be finished loading. This event is often the starting point for javascript framework execution, e.g., JQuerys onready() callback, etc.</DataItem>
+      <DataItem Name="domLatencyMetricsSample" APICommand="ga:domLatencyMetricsSample" WebViewName="DOM Latency Metrics Sample" AppViewName="" DataType="INTEGER" AllowedInSegments="False">The sample set (or count) of pageviews used to calculate the averages for site speed DOM metrics. This metric is used in the avgDomContentLoadedTime and avgDomInteractiveTime calculations.</DataItem>
+    </ItemType>
+    <ItemType Name="Calculated" Value="3">
+      <DataItem Name="avgPageLoadTime" APICommand="ga:avgPageLoadTime" WebViewName="Avg. Page Load Time (sec)" AppViewName="" DataType="FLOAT" AllowedInSegments="False">The average amount of time (in seconds) it takes for pages from the sample set to load, from initiation of the pageview (e.g. click on a page link) to load completion in the browser. ((ga:pageLoadTime / ga:pageLoadSample / 1000) ) </DataItem>
+      <DataItem Name="avgDomainLookupTime" APICommand="ga:avgDomainLookupTime" WebViewName="Avg. Domain Lookup Time (sec)" AppViewName="" DataType="FLOAT" AllowedInSegments="False">The average amount of time (in seconds) spent in DNS lookup for this page. ((ga:domainLookupTime / ga:speedMetricsSample / 1000) ) </DataItem>
+      <DataItem Name="avgPageDownloadTime" APICommand="ga:avgPageDownloadTime" WebViewName="Avg. Page Download Time (sec)" AppViewName="" DataType="FLOAT" AllowedInSegments="False">The average amount of time (in seconds) to download this page. ((ga:pageDownloadTime / ga:speedMetricsSample / 1000) ) </DataItem>
+      <DataItem Name="avgRedirectionTime" APICommand="ga:avgRedirectionTime" WebViewName="Avg. Redirection Time (sec)" AppViewName="" DataType="FLOAT" AllowedInSegments="False">The average amount of time (in seconds) spent in redirects before fetching this page. If there are no redirects, the value for this metric is expected to be 0. ((ga:redirectionTime / ga:speedMetricsSample / 1000) ) </DataItem>
+      <DataItem Name="avgServerConnectionTime" APICommand="ga:avgServerConnectionTime" WebViewName="Avg. Server Connection Time (sec)" AppViewName="" DataType="FLOAT" AllowedInSegments="False">The average amount of time (in seconds) spent in establishing TCP connection for this page. ((ga:serverConnectionTime / ga:speedMetricsSample / 1000) ) </DataItem>
+      <DataItem Name="avgServerResponseTime" APICommand="ga:avgServerResponseTime" WebViewName="Avg. Server Response Time (sec)" AppViewName="" DataType="FLOAT" AllowedInSegments="False">The average amount of time (in seconds) your server takes to respond to a user request, including the network time from users location to your server. ((ga:serverResponseTime / ga:speedMetricsSample / 1000) ) </DataItem>
+      <DataItem Name="avgDomInteractiveTime" APICommand="ga:avgDomInteractiveTime" WebViewName="Avg. Document Interactive Time (sec)" AppViewName="" DataType="FLOAT" AllowedInSegments="False">The average time (in seconds) it takes the browser to parse the document and execute deferred and parser-inserted scripts including the network time from the users location to your server. ((ga:domInteractiveTime / ga:domLatencyMetricsSample / 1000) ) </DataItem>
+      <DataItem Name="avgDomContentLoadedTime" APICommand="ga:avgDomContentLoadedTime" WebViewName="Avg. Document Content Loaded Time (sec)" AppViewName="" DataType="FLOAT" AllowedInSegments="False">The average time (in seconds) it takes the browser to parse the document. ((ga:domContentLoadedTime / ga:domLatencyMetricsSample / 1000) ) </DataItem>
+    </ItemType>
+  </DataCategory>
+  <DataCategory Name="App Tracking">
+    <ItemType Name="Dimensions" Value="1">
+      <DataItem Name="appInstallerId" APICommand="ga:appInstallerId" WebViewName="App Installer ID" AppViewName="" DataType="STRING" AllowedInSegments="True">ID of the installer (e.g., Google Play Store) from which the app was downloaded. By default, the app installer id is set based on the PackageManager#getInstallerPackageName method.</DataItem>
+      <DataItem Name="appVersion" APICommand="ga:appVersion" WebViewName="App Version" AppViewName="" DataType="STRING" AllowedInSegments="True">The version of the application.</DataItem>
+      <DataItem Name="appName" APICommand="ga:appName" WebViewName="App Name" AppViewName="" DataType="STRING" AllowedInSegments="True">The name of the application.</DataItem>
+      <DataItem Name="appId" APICommand="ga:appId" WebViewName="App ID" AppViewName="" DataType="STRING" AllowedInSegments="True">The ID of the application.</DataItem>
+      <DataItem Name="screenName" APICommand="ga:screenName" WebViewName="Screen Name" AppViewName="" DataType="STRING" AllowedInSegments="True">The name of the screen.</DataItem>
+      <DataItem Name="screenDepth" APICommand="ga:screenDepth" WebViewName="Screen Depth" AppViewName="" DataType="STRING" AllowedInSegments="True">The number of screenviews per session reported as a string. Can be useful for historgrams.</DataItem>
+      <DataItem Name="landingScreenName" APICommand="ga:landingScreenName" WebViewName="Landing Screen" AppViewName="" DataType="STRING" AllowedInSegments="True">The name of the first screen viewed.</DataItem>
+      <DataItem Name="exitScreenName" APICommand="ga:exitScreenName" WebViewName="Exit Screen" AppViewName="" DataType="STRING" AllowedInSegments="True">The name of the screen when the user exited the application.</DataItem>
+    </ItemType>
+    <ItemType Name="Metrics" Value="2">
+      <DataItem Name="screenviews" APICommand="ga:screenviews" WebViewName="Screen Views" AppViewName="" DataType="INTEGER" AllowedInSegments="True">The total number of screenviews.</DataItem>
+      <DataItem Name="uniqueScreenviews" APICommand="ga:uniqueScreenviews" WebViewName="Unique Screen Views" AppViewName="" DataType="INTEGER" AllowedInSegments="True">The number of different (unique) screenviews within a session.</DataItem>
+      <DataItem Name="timeOnScreen" APICommand="ga:timeOnScreen" WebViewName="Time on Screen" AppViewName="" DataType="TIME" AllowedInSegments="True">The time spent viewing the current screen.</DataItem>
+      <DataItem Name="avgScreenviewDuration" APICommand="ga:avgScreenviewDuration" WebViewName="Avg. Time on Screen" AppViewName="" DataType="TIME" AllowedInSegments="False">The average amount of time users spent on a screen in seconds.</DataItem>
+    </ItemType>
+    <ItemType Name="Calculated" Value="3">
+      <DataItem Name="screenviewsPerSession" APICommand="ga:screenviewsPerSession" WebViewName="Screens / Session" AppViewName="" DataType="FLOAT" AllowedInSegments="False">The average number of screenviews per session. (ga:screenviews / ga:visits ) </DataItem>
+    </ItemType>
+  </DataCategory>
+  <DataCategory Name="Event Tracking">
+    <ItemType Name="Dimensions" Value="1">
+      <DataItem Name="eventCategory" APICommand="ga:eventCategory" WebViewName="Event Category" AppViewName="" DataType="STRING" AllowedInSegments="True">The category of the event.</DataItem>
+      <DataItem Name="eventAction" APICommand="ga:eventAction" WebViewName="Event Action" AppViewName="" DataType="STRING" AllowedInSegments="True">The action of the event.</DataItem>
+      <DataItem Name="eventLabel" APICommand="ga:eventLabel" WebViewName="Event Label" AppViewName="" DataType="STRING" AllowedInSegments="True">The label of the event.</DataItem>
+    </ItemType>
+    <ItemType Name="Metrics" Value="2">
+      <DataItem Name="totalEvents" APICommand="ga:totalEvents" WebViewName="Total Events" AppViewName="" DataType="INTEGER" AllowedInSegments="True">The total number of events for the profile, across all categories.</DataItem>
+      <DataItem Name="uniqueEvents" APICommand="ga:uniqueEvents" WebViewName="Unique Events" AppViewName="" DataType="INTEGER" AllowedInSegments="False">The total number of unique events for the profile, across all categories.</DataItem>
+      <DataItem Name="eventValue" APICommand="ga:eventValue" WebViewName="Event Value" AppViewName="" DataType="INTEGER" AllowedInSegments="True">The total value of events for the profile.</DataItem>
+      <DataItem Name="visitsWithEvent" APICommand="ga:visitsWithEvent" WebViewName="Visits with Event" AppViewName="Sessions with Event" DataType="INTEGER" AllowedInSegments="True">The total number of visits with events.</DataItem>
+    </ItemType>
+    <ItemType Name="Calculated" Value="3">
+      <DataItem Name="avgEventValue" APICommand="ga:avgEventValue" WebViewName="Avg. Value" AppViewName="" DataType="FLOAT" AllowedInSegments="False">The average value of an event. (ga:eventValue / ga:totalEvents ) </DataItem>
+      <DataItem Name="eventsPerVisitWithEvent" APICommand="ga:eventsPerVisitWithEvent" WebViewName="Events / Visit" AppViewName="Events / Session" DataType="FLOAT" AllowedInSegments="False">The average number of events per visit with event. (ga:totalEvents / ga:visitsWithEvent ) </DataItem>
+    </ItemType>
+  </DataCategory>
+  <DataCategory Name="Ecommerce">
+    <ItemType Name="Dimensions" Value="1">
+      <DataItem Name="transactionId" APICommand="ga:transactionId" WebViewName="Transaction" AppViewName="" DataType="STRING" AllowedInSegments="False">The transaction ID for the shopping cart purchase as supplied by your ecommerce tracking method.</DataItem>
+      <DataItem Name="affiliation" APICommand="ga:affiliation" WebViewName="Affiliation" AppViewName="" DataType="STRING" AllowedInSegments="True">Typically used to designate a supplying company or brick and mortar location; product affiliation.</DataItem>
+      <DataItem Name="visitsToTransaction" APICommand="ga:visitsToTransaction" WebViewName="Visits to Transaction" AppViewName="Sessions to Transaction" DataType="STRING" AllowedInSegments="True">The number of visits between users purchases and the related campaigns that lead to the purchases.</DataItem>
+      <DataItem Name="daysToTransaction" APICommand="ga:daysToTransaction" WebViewName="Days to Transaction" AppViewName="" DataType="STRING" AllowedInSegments="True">The number of days between users purchases and the related campaigns that lead to the purchases.</DataItem>
+      <DataItem Name="productSku" APICommand="ga:productSku" WebViewName="Product SKU" AppViewName="" DataType="STRING" AllowedInSegments="True">The product sku for purchased items as you have defined them in your ecommerce tracking application.</DataItem>
+      <DataItem Name="productName" APICommand="ga:productName" WebViewName="Product" AppViewName="" DataType="STRING" AllowedInSegments="True">The product name for purchased items as supplied by your ecommerce tracking application.</DataItem>
+      <DataItem Name="productCategory" APICommand="ga:productCategory" WebViewName="Product Category" AppViewName="" DataType="STRING" AllowedInSegments="True">Any product variations (size, color) for purchased items as supplied by your ecommerce application.</DataItem>
+      <DataItem Name="currencyCode" APICommand="ga:currencyCode" WebViewName="Currency Code" AppViewName="" DataType="STRING" AllowedInSegments="False">The local currency code of the transaction based on ISO 4217 standard.</DataItem>
+    </ItemType>
+    <ItemType Name="Metrics" Value="2">
+      <DataItem Name="transactions" APICommand="ga:transactions" WebViewName="Transactions" AppViewName="" DataType="INTEGER" AllowedInSegments="True">The total number of transactions.</DataItem>
+      <DataItem Name="transactionRevenue" APICommand="ga:transactionRevenue" WebViewName="Revenue" AppViewName="In-App Revenue" DataType="CURRENCY" AllowedInSegments="True">The total sale revenue provided in the transaction excluding shipping and tax.</DataItem>
+      <DataItem Name="transactionShipping" APICommand="ga:transactionShipping" WebViewName="Shipping" AppViewName="" DataType="CURRENCY" AllowedInSegments="True">The total cost of shipping.</DataItem>
+      <DataItem Name="transactionTax" APICommand="ga:transactionTax" WebViewName="Tax" AppViewName="" DataType="CURRENCY" AllowedInSegments="True">The total amount of tax.</DataItem>
+      <DataItem Name="itemQuantity" APICommand="ga:itemQuantity" WebViewName="Quantity" AppViewName="" DataType="INTEGER" AllowedInSegments="True">The total number of items purchased. For example, if users purchase 2 frisbees and 5 tennis balls, 7 items have been purchased.</DataItem>
+      <DataItem Name="uniquePurchases" APICommand="ga:uniquePurchases" WebViewName="Unique Purchases" AppViewName="" DataType="INTEGER" AllowedInSegments="True">The number of product sets purchased. For example, if users purchase 2 frisbees and 5 tennis balls from your site, 2 unique products have been purchased.</DataItem>
+      <DataItem Name="itemRevenue" APICommand="ga:itemRevenue" WebViewName="Product Revenue" AppViewName="" DataType="CURRENCY" AllowedInSegments="True">The total revenue from purchased product items on your property.</DataItem>
+      <DataItem Name="localTransactionRevenue" APICommand="ga:localTransactionRevenue" WebViewName="Local Revenue" AppViewName="" DataType="CURRENCY" AllowedInSegments="False">Transaction revenue in local currency.</DataItem>
+      <DataItem Name="localTransactionShipping" APICommand="ga:localTransactionShipping" WebViewName="Local Shipping" AppViewName="" DataType="CURRENCY" AllowedInSegments="False">Transaction shipping cost in local currency.</DataItem>
+      <DataItem Name="localTransactionTax" APICommand="ga:localTransactionTax" WebViewName="Local Tax" AppViewName="" DataType="CURRENCY" AllowedInSegments="False">Transaction tax in local currency.</DataItem>
+      <DataItem Name="localItemRevenue" APICommand="ga:localItemRevenue" WebViewName="Local Product Revenue" AppViewName="" DataType="CURRENCY" AllowedInSegments="True">Product revenue in local currency.</DataItem>
+    </ItemType>
+    <ItemType Name="Calculated" Value="3">
+      <DataItem Name="transactionsPerVisit" APICommand="ga:transactionsPerVisit" WebViewName="Ecommerce Conversion Rate" AppViewName="" DataType="PERCENT" AllowedInSegments="False">The average number of transactions for a visit to your property. (ga:transactions / ga:visits ) </DataItem>
+      <DataItem Name="revenuePerTransaction" APICommand="ga:revenuePerTransaction" WebViewName="Average Order Value" AppViewName="" DataType="CURRENCY" AllowedInSegments="False">The average revenue for an e-commerce transaction. (ga:transactionRevenue / ga:transactions ) </DataItem>
+      <DataItem Name="transactionRevenuePerVisit" APICommand="ga:transactionRevenuePerVisit" WebViewName="Per Visit Value" AppViewName="Per Session Value" DataType="CURRENCY" AllowedInSegments="False">Average transaction revenue for a visit to your property. (ga:transactionRevenue / ga:visits ) </DataItem>
+      <DataItem Name="totalValue" APICommand="ga:totalValue" WebViewName="Total Value" AppViewName="" DataType="CURRENCY" AllowedInSegments="False">Total value for your property (including total revenue and total goal value). ((ga:transactionRevenue + ga:goalValueAll) ) </DataItem>
+      <DataItem Name="revenuePerItem" APICommand="ga:revenuePerItem" WebViewName="Average Price" AppViewName="" DataType="CURRENCY" AllowedInSegments="False">The average revenue per item. (ga:itemRevenue / ga:itemQuantity ) </DataItem>
+      <DataItem Name="itemsPerPurchase" APICommand="ga:itemsPerPurchase" WebViewName="Average QTY" AppViewName="" DataType="FLOAT" AllowedInSegments="False">The average quantity of this item (or group of items) sold per purchase. (ga:itemQuantity / ga:uniquePurchases ) </DataItem>
+    </ItemType>
+  </DataCategory>
+  <DataCategory Name="Social Interactions">
+    <ItemType Name="Dimensions" Value="1">
+      <DataItem Name="socialInteractionNetwork" APICommand="ga:socialInteractionNetwork" WebViewName="Social Source" AppViewName="" DataType="STRING" AllowedInSegments="False">For social interactions, a value representing the social network being tracked.</DataItem>
+      <DataItem Name="socialInteractionAction" APICommand="ga:socialInteractionAction" WebViewName="Social Action" AppViewName="" DataType="STRING" AllowedInSegments="False">For social interactions, a value representing the social action being tracked (e.g. +1, bookmark)</DataItem>
+      <DataItem Name="socialInteractionNetworkAction" APICommand="ga:socialInteractionNetworkAction" WebViewName="Social Source and Action" AppViewName="" DataType="STRING" AllowedInSegments="False">For social interactions, a value representing the concatenation of the socialInteractionNetwork and socialInteractionAction action being tracked at this hit level (e.g. Google: +1)</DataItem>
+      <DataItem Name="socialInteractionTarget" APICommand="ga:socialInteractionTarget" WebViewName="Social Entity" AppViewName="" DataType="STRING" AllowedInSegments="False">For social interactions, a value representing the URL (or resource) which receives the social network action.</DataItem>
+      <DataItem Name="socialEngagementType" APICommand="ga:socialEngagementType" WebViewName="Social Type" AppViewName="" DataType="STRING" AllowedInSegments="False">Engagement type. Possible values are Socially Engaged or Not Socially Engaged.</DataItem>
+    </ItemType>
+    <ItemType Name="Metrics" Value="2">
+      <DataItem Name="socialInteractions" APICommand="ga:socialInteractions" WebViewName="Social Actions" AppViewName="" DataType="INTEGER" AllowedInSegments="False">The total number of social interactions on your property.</DataItem>
+      <DataItem Name="uniqueSocialInteractions" APICommand="ga:uniqueSocialInteractions" WebViewName="Unique Social Actions" AppViewName="" DataType="INTEGER" AllowedInSegments="False">The number of sessions during which the specified social action(s) occurred at least once. This is based on the the unique combination of socialInteractionNetwork, socialInteractionAction, and socialInteractionTarget.</DataItem>
+    </ItemType>
+    <ItemType Name="Calculated" Value="3">
+      <DataItem Name="socialInteractionsPerVisit" APICommand="ga:socialInteractionsPerVisit" WebViewName="Actions Per Social Visit" AppViewName="" DataType="FLOAT" AllowedInSegments="False">The number of social interactions per visit to your property. (ga:socialInteractions / ga:uniqueSocialInteractions ) </DataItem>
+    </ItemType>
+  </DataCategory>
+  <DataCategory Name="User Timings">
+    <ItemType Name="Dimensions" Value="1">
+      <DataItem Name="userTimingCategory" APICommand="ga:userTimingCategory" WebViewName="Timing Category" AppViewName="" DataType="STRING" AllowedInSegments="True">A string for categorizing all user timing variables into logical groups for easier reporting purposes.</DataItem>
+      <DataItem Name="userTimingLabel" APICommand="ga:userTimingLabel" WebViewName="Timing Label" AppViewName="" DataType="STRING" AllowedInSegments="True">The name of the resources action being tracked.</DataItem>
+      <DataItem Name="userTimingVariable" APICommand="ga:userTimingVariable" WebViewName="Timing Variable" AppViewName="" DataType="STRING" AllowedInSegments="True">A value that can be used to add flexibility in visualizing user timings in the reports.</DataItem>
+    </ItemType>
+    <ItemType Name="Metrics" Value="2">
+      <DataItem Name="userTimingValue" APICommand="ga:userTimingValue" WebViewName="User Timing (ms)" AppViewName="" DataType="INTEGER" AllowedInSegments="False">The total number of milliseconds for a user timing.</DataItem>
+      <DataItem Name="userTimingSample" APICommand="ga:userTimingSample" WebViewName="User Timing Sample" AppViewName="" DataType="INTEGER" AllowedInSegments="False">The number of hits that were sent for a particular userTimingCategory, userTimingLabel, and userTimingVariable.</DataItem>
+    </ItemType>
+    <ItemType Name="Calculated" Value="3">
+      <DataItem Name="avgUserTimingValue" APICommand="ga:avgUserTimingValue" WebViewName="Avg. User Timing (sec)" AppViewName="" DataType="FLOAT" AllowedInSegments="False">The average amount of elapsed time. ((ga:userTimingValue / ga:userTimingSample / 1000) ) </DataItem>
+    </ItemType>
+  </DataCategory>
+  <DataCategory Name="Exceptions">
+    <ItemType Name="Dimensions" Value="1">
+      <DataItem Name="exceptionDescription" APICommand="ga:exceptionDescription" WebViewName="Exception Description" AppViewName="" DataType="STRING" AllowedInSegments="True">The description for the exception.</DataItem>
+    </ItemType>
+    <ItemType Name="Metrics" Value="2">
+      <DataItem Name="exceptions" APICommand="ga:exceptions" WebViewName="Exceptions" AppViewName="" DataType="INTEGER" AllowedInSegments="True">The number of exceptions that were sent to Google Analytics.</DataItem>
+      <DataItem Name="fatalExceptions" APICommand="ga:fatalExceptions" WebViewName="Crashes" AppViewName="" DataType="INTEGER" AllowedInSegments="True">The number of exceptions where isFatal is set to true.</DataItem>
+    </ItemType>
+    <ItemType Name="Calculated" Value="3">
+      <DataItem Name="exceptionsPerScreenview" APICommand="ga:exceptionsPerScreenview" WebViewName="Exceptions / Screen" AppViewName="" DataType="PERCENT" AllowedInSegments="False">The number of exceptions thrown divided by the number of screenviews. (ga:exceptions / ga:screenviews ) </DataItem>
+      <DataItem Name="fatalExceptionsPerScreenview" APICommand="ga:fatalExceptionsPerScreenview" WebViewName="Crashes / Screen" AppViewName="" DataType="PERCENT" AllowedInSegments="False">The number of fatal exceptions thrown divided by the number of screenviews. (ga:fatalExceptions / ga:screenviews ) </DataItem>
+    </ItemType>
+  </DataCategory>
+  <DataCategory Name="Content Experiments">
+    <ItemType Name="Dimensions" Value="1">
+      <DataItem Name="experimentId" APICommand="ga:experimentId" WebViewName="Experiment ID" AppViewName="" DataType="STRING" AllowedInSegments="True">The visitor-scoped id of the content experiment that the user was exposed to when the metrics were reported.</DataItem>
+      <DataItem Name="experimentVariant" APICommand="ga:experimentVariant" WebViewName="Variation" AppViewName="" DataType="STRING" AllowedInSegments="True">The visitor-scoped id of the particular variation that the user was exposed to during a content experiment.</DataItem>
+    </ItemType>
+    <ItemType Name="Metrics" Value="2" />
+    <ItemType Name="Calculated" Value="3" />
+  </DataCategory>
+  <DataCategory Name="Custom Variables or Columns">
+    <ItemType Name="Dimensions" Value="1">
+      <DataItem Name="dimensionXX" APICommand="ga:dimensionXX" WebViewName="Custom Dimension" AppViewName="" DataType="STRING" AllowedInSegments="True">The name of the requested custom dimension, where XX refers the number/index of the custom dimension.</DataItem>
+      <DataItem Name="customVarNameXX" APICommand="ga:customVarNameXX" WebViewName="Custom Variable (Key 1)" AppViewName="" DataType="STRING" AllowedInSegments="True">The name for the requested custom variable.</DataItem>
+      <DataItem Name="customVarValueXX" APICommand="ga:customVarValueXX" WebViewName="Custom Variable (Value 01)" AppViewName="" DataType="STRING" AllowedInSegments="True">The value for the requested custom variable.</DataItem>
+    </ItemType>
+    <ItemType Name="Metrics" Value="2">
+      <DataItem Name="metricXX" APICommand="ga:metricXX" WebViewName="Custom Metric  Value" AppViewName="" DataType="INTEGER" AllowedInSegments="True">The name of the requested custom metric, where XX refers the number/index of the custom metric.</DataItem>
+    </ItemType>
+    <ItemType Name="Calculated" Value="3" />
+  </DataCategory>
+  <DataCategory Name="Time">
+    <ItemType Name="Dimensions" Value="1">
+      <DataItem Name="date" APICommand="ga:date" WebViewName="Date" AppViewName="" DataType="STRING" AllowedInSegments="False">The date of the visit formatted as YYYYMMDD.</DataItem>
+      <DataItem Name="year" APICommand="ga:year" WebViewName="Year" AppViewName="" DataType="STRING" AllowedInSegments="False">The year of the visit. A four-digit year from 2005 to the current year.</DataItem>
+      <DataItem Name="month" APICommand="ga:month" WebViewName="Month of the year" AppViewName="" DataType="STRING" AllowedInSegments="False">The month of the visit. A two digit integer from 01 to 12.</DataItem>
+      <DataItem Name="week" APICommand="ga:week" WebViewName="Week of the Year" AppViewName="" DataType="STRING" AllowedInSegments="False">The week of the visit. A two-digit number from 01 to 53. Each week starts on Sunday.</DataItem>
+      <DataItem Name="day" APICommand="ga:day" WebViewName="Day of the month" AppViewName="" DataType="STRING" AllowedInSegments="False">The day of the month. A two-digit number from 01 to 31.</DataItem>
+      <DataItem Name="hour" APICommand="ga:hour" WebViewName="Hour" AppViewName="" DataType="STRING" AllowedInSegments="True">A two-digit hour of the day ranging from 00-23 in the timezone configured for the account. This value is also corrected for daylight savings time, adhering to all local rules for daylight savings time. If your timezone follows daylight savings time, there will be an apparent bump in the number of visits during the change-over hour (e.g. between 1:00 and 2:00) for the day per year when that hour repeats. A corresponding hour with zero visits will occur at the opposite changeover. (Google Analytics does not track visitor time more precisely than hours.)</DataItem>
+      <DataItem Name="minute" APICommand="ga:minute" WebViewName="Minute" AppViewName="" DataType="STRING" AllowedInSegments="True">Returns the minute in the hour. The possible values are between 00 and 59.</DataItem>
+      <DataItem Name="nthMonth" APICommand="ga:nthMonth" WebViewName="Month Index" AppViewName="" DataType="STRING" AllowedInSegments="False">Index for each month in the specified date range. Index for the first month in the date range is 0, 1 for the second month, and so on. The index corresponds to month entries.</DataItem>
+      <DataItem Name="nthWeek" APICommand="ga:nthWeek" WebViewName="Week Index" AppViewName="" DataType="STRING" AllowedInSegments="False">Index for each week in the specified date range. Index for the first week in the date range is 0, 1 for the second week, and so on. The index corresponds to week entries.</DataItem>
+      <DataItem Name="nthDay" APICommand="ga:nthDay" WebViewName="Day Index" AppViewName="" DataType="STRING" AllowedInSegments="False">Index for each day in the specified date range. Index for the first day (i.e., start-date) in the date range is 0, 1 for the second day, and so on.</DataItem>
+      <DataItem Name="nthMinute" APICommand="ga:nthMinute" WebViewName="Minute Index" AppViewName="" DataType="STRING" AllowedInSegments="False">Index for each minute in the specified date range. Index for the first minute of first day (i.e., start-date) in the date range is 0, 1 for the next minute, and so on.</DataItem>
+      <DataItem Name="dayOfWeek" APICommand="ga:dayOfWeek" WebViewName="Day of Week" AppViewName="" DataType="STRING" AllowedInSegments="False">The day of the week. A one-digit number from 0 (Sunday) to 6 (Saturday).</DataItem>
+      <DataItem Name="dayOfWeekName" APICommand="ga:dayOfWeekName" WebViewName="Day of Week Name" AppViewName="" DataType="STRING" AllowedInSegments="False">The name of the day of the week (in English).</DataItem>
+      <DataItem Name="dateHour" APICommand="ga:dateHour" WebViewName="Hour of Day" AppViewName="" DataType="STRING" AllowedInSegments="False">Combined values of ga:date and ga:hour.</DataItem>
+      <DataItem Name="yearMonth" APICommand="ga:yearMonth" WebViewName="Month of Year" AppViewName="" DataType="STRING" AllowedInSegments="False">Combined values of ga:year and ga:month.</DataItem>
+      <DataItem Name="yearWeek" APICommand="ga:yearWeek" WebViewName="Week of Year" AppViewName="" DataType="STRING" AllowedInSegments="False">Combined values of ga:year and ga:week.</DataItem>
+      <DataItem Name="isoWeek" APICommand="ga:isoWeek" WebViewName="ISO Week of the Year" AppViewName="" DataType="STRING" AllowedInSegments="False">The ISO week number, where each week starts with a Monday. Details: 
+http://en.wikipedia.org/wiki/ISO_week_date
+. ga:isoWeek should only be used with ga:isoYear since ga:year represents gregorian calendar.</DataItem>
+      <DataItem Name="isoYear" APICommand="ga:isoYear" WebViewName="ISO Year" AppViewName="" DataType="STRING" AllowedInSegments="False">The ISO year of the visit. Details: 
+http://en.wikipedia.org/wiki/ISO_week_date
+. ga:isoYear should only be used with ga:isoWeek since ga:week represents gregorian calendar.</DataItem>
+      <DataItem Name="isoYearIsoWeek" APICommand="ga:isoYearIsoWeek" WebViewName="ISO Week of ISO Year" AppViewName="" DataType="STRING" AllowedInSegments="False">Combined values of ga:isoYear and ga:isoWeek.</DataItem>
+    </ItemType>
+    <ItemType Name="Metrics" Value="2" />
+    <ItemType Name="Calculated" Value="3" />
+  </DataCategory>
+  <DataCategory Name="Audience">
+    <ItemType Name="Dimensions" Value="1">
+      <DataItem Name="visitorAgeBracket" APICommand="ga:visitorAgeBracket" WebViewName="Age" AppViewName="" DataType="STRING" AllowedInSegments="True">Age bracket of visitor.</DataItem>
+      <DataItem Name="visitorGender" APICommand="ga:visitorGender" WebViewName="Gender" AppViewName="" DataType="STRING" AllowedInSegments="True">Gender of visitor.</DataItem>
+      <DataItem Name="interestOtherCategory" APICommand="ga:interestOtherCategory" WebViewName="Other Category" AppViewName="" DataType="STRING" AllowedInSegments="True">Indicates that users are more likely to be interested in learning about the specified category, and more likely to be ready to purchase.</DataItem>
+      <DataItem Name="interestAffinityCategory" APICommand="ga:interestAffinityCategory" WebViewName="Affinity Category (reach)" AppViewName="" DataType="STRING" AllowedInSegments="True">Indicates that users are more likely to be interested in learning about the specified category.</DataItem>
+      <DataItem Name="interestInMarketCategory" APICommand="ga:interestInMarketCategory" WebViewName="In-market Segment" AppViewName="" DataType="STRING" AllowedInSegments="True">Indicates that users are more likely to be ready to purchase products or services in the specified category.</DataItem>
+    </ItemType>
+    <ItemType Name="Metrics" Value="2" />
+    <ItemType Name="Calculated" Value="3" />
+  </DataCategory>
+  <DataCategory Name="Audience">
+    <ItemType Name="Dimensions" Value="1">
+      <DataItem Name="visitorAgeBracket" APICommand="ga:visitorAgeBracket" WebViewName="Age" AppViewName="" DataType="STRING" AllowedInSegments="True">Age bracket of visitor.</DataItem>
+      <DataItem Name="visitorGender" APICommand="ga:visitorGender" WebViewName="Gender" AppViewName="" DataType="STRING" AllowedInSegments="True">Gender of visitor.</DataItem>
+      <DataItem Name="interestOtherCategory" APICommand="ga:interestOtherCategory" WebViewName="Other Category" AppViewName="" DataType="STRING" AllowedInSegments="True">Indicates that users are more likely to be interested in learning about the specified category, and more likely to be ready to purchase.</DataItem>
+      <DataItem Name="interestAffinityCategory" APICommand="ga:interestAffinityCategory" WebViewName="Affinity Category (reach)" AppViewName="" DataType="STRING" AllowedInSegments="True">Indicates that users are more likely to be interested in learning about the specified category.</DataItem>
+      <DataItem Name="interestInMarketCategory" APICommand="ga:interestInMarketCategory" WebViewName="In-market Segment" AppViewName="" DataType="STRING" AllowedInSegments="True">Indicates that users are more likely to be ready to purchase products or services in the specified category.</DataItem>
+    </ItemType>
+    <ItemType Name="Metrics" Value="2" />
+    <ItemType Name="Calculated" Value="3" />
+  </DataCategory>
+  <DataCategory Name="Adsense">
+    <ItemType Name="Dimensions" Value="1" />
+    <ItemType Name="Metrics" Value="2">
+      <DataItem Name="adsenseRevenue" APICommand="ga:adsenseRevenue" WebViewName="AdSense Revenue" AppViewName="" DataType="CURRENCY" AllowedInSegments="True">The total revenue from AdSense ads.</DataItem>
+      <DataItem Name="adsenseAdUnitsViewed" APICommand="ga:adsenseAdUnitsViewed" WebViewName="AdSense Ad Units Viewed" AppViewName="" DataType="INTEGER" AllowedInSegments="True">The number of AdSense ad units viewed. An Ad unit is a set of ads displayed as a result of one piece of the AdSense ad code. Details: 
+https://support.google.com/adsense/answer/32715?hl=en</DataItem>
+      <DataItem Name="adsenseAdsViewed" APICommand="ga:adsenseAdsViewed" WebViewName="AdSense Ads Viewed" AppViewName="" DataType="INTEGER" AllowedInSegments="True">The number of AdSense ads viewed. Multiple ads can be displayed within an Ad Unit.</DataItem>
+      <DataItem Name="adsenseAdsClicks" APICommand="ga:adsenseAdsClicks" WebViewName="AdSense Ads Clicked" AppViewName="" DataType="INTEGER" AllowedInSegments="True">The number of times AdSense ads on your site were clicked.</DataItem>
+      <DataItem Name="adsensePageImpressions" APICommand="ga:adsensePageImpressions" WebViewName="AdSense Page Impressions" AppViewName="" DataType="INTEGER" AllowedInSegments="True">The number of pageviews during which an AdSense ad was displayed. A page impression can have multiple Ad Units.</DataItem>
+      <DataItem Name="adsenseExits" APICommand="ga:adsenseExits" WebViewName="AdSense Exits" AppViewName="" DataType="INTEGER" AllowedInSegments="True">The number of sessions that ended due to a user clicking on an AdSense ad.</DataItem>
+    </ItemType>
+    <ItemType Name="Calculated" Value="3">
+      <DataItem Name="adsenseCTR" APICommand="ga:adsenseCTR" WebViewName="AdSense CTR" AppViewName="" DataType="PERCENT" AllowedInSegments="False">The percentage of page impressions that resulted in a click on an AdSense ad. (ga:adsenseAdsClicks/ga:adsensePageImpressions ) </DataItem>
+      <DataItem Name="adsenseECPM" APICommand="ga:adsenseECPM" WebViewName="AdSense eCPM" AppViewName="" DataType="CURRENCY" AllowedInSegments="False">The estimated cost per thousand page impressions. It is your AdSense Revenue per 1000 page impressions. (ga:adsenseRevenue/(ga:adsensePageImpressions/1000) ) </DataItem>
+    </ItemType>
+  </DataCategory>
+</DataItems>
