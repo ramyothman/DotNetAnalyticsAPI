@@ -1,0 +1,239 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="Analytics.AnalyticsManager" Collapsed="true">
+    <Position X="4" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AgAAAAACAACAAgAAAAAAAAAAAAAAiAAAQCA0BAAAIAA=</HashCode>
+      <FileName>AnalyticsManager.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Analytics.Data.DataItem">
+    <Position X="1.25" Y="5.5" Width="2.25" />
+    <Compartments>
+      <Compartment Name="Fields" Collapsed="true" />
+    </Compartments>
+    <TypeIdentifier>
+      <HashCode>gAIAAAAAAEYgCAAAAAEABAQAAAAEAAACAQAACAACCgA=</HashCode>
+      <FileName>Data\DataItem.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Analytics.Data.Adsense" Collapsed="true">
+    <Position X="0.5" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Data\System\Adsense.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Analytics.Data.Adwords" Collapsed="true">
+    <Position X="2.25" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Data\System\Adwords.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Analytics.Data.AppTracking" Collapsed="true">
+    <Position X="5.75" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Data\System\AppTracking.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Analytics.Data.Audience" Collapsed="true">
+    <Position X="7.5" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Data\System\Audience.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Analytics.Data.ContentExperiments" Collapsed="true">
+    <Position X="9.25" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Data\System\ContentExperiments.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Analytics.Data.CustomVariablesorColumns" Collapsed="true">
+    <Position X="0.5" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Data\System\CustomVariablesorColumns.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Analytics.Data.Ecommerce" Collapsed="true">
+    <Position X="5.75" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Data\System\Ecommerce.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Analytics.Data.EventTracking" Collapsed="true">
+    <Position X="7.5" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Data\System\EventTracking.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Analytics.Data.Exceptions" Collapsed="true">
+    <Position X="9.25" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Data\System\Exceptions.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Analytics.Data.GeoNetwork" Collapsed="true">
+    <Position X="0.5" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Data\System\GeoNetwork.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Analytics.Data.GoalConversions" Collapsed="true">
+    <Position X="2.25" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Data\System\GoalConversions.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Analytics.Data.InternalSearch" Collapsed="true">
+    <Position X="4" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Data\System\InternalSearch.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Analytics.Data.PageTracking" Collapsed="true">
+    <Position X="5.75" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Data\System\PageTracking.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Analytics.Data.PlatformorDevice" Collapsed="true">
+    <Position X="7.5" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Data\System\PlatformorDevice.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Analytics.Data.Session">
+    <Position X="3.75" Y="5.5" Width="2.25" />
+    <Compartments>
+      <Compartment Name="Nested Types" Collapsed="false" />
+    </Compartments>
+    <NestedTypes>
+      <Class Name="Analytics.Data.Session.Dimensions">
+        <TypeIdentifier>
+          <NewMemberFileName>Data\System\Session.cs</NewMemberFileName>
+        </TypeIdentifier>
+      </Class>
+      <Class Name="Analytics.Data.Session.Metrics">
+        <NestedTypes>
+          <Class Name="Analytics.Data.Session.Metrics.Calculated" Collapsed="true">
+            <TypeIdentifier>
+              <NewMemberFileName>Data\System\Session.cs</NewMemberFileName>
+            </TypeIdentifier>
+          </Class>
+        </NestedTypes>
+        <TypeIdentifier>
+          <NewMemberFileName>Data\System\Session.cs</NewMemberFileName>
+        </TypeIdentifier>
+      </Class>
+    </NestedTypes>
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Data\System\Session.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Analytics.Data.SiteSpeed" Collapsed="true">
+    <Position X="0.5" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Data\System\SiteSpeed.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Analytics.Data.SocialActivities" Collapsed="true">
+    <Position X="2.25" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Data\System\SocialActivities.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Analytics.Data.SocialInteractions" Collapsed="true">
+    <Position X="4" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Data\System\SocialInteractions.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Analytics.Data.System" Collapsed="true">
+    <Position X="5.75" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Data\System\System.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Analytics.Data.Time" Collapsed="true">
+    <Position X="7.5" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Data\System\Time.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Analytics.Data.TrafficSources" Collapsed="true">
+    <Position X="9.25" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Data\System\TrafficSources.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Analytics.Data.UserTimings" Collapsed="true">
+    <Position X="0.5" Y="4.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Data\System\UserTimings.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Analytics.Data.Visitor">
+    <Position X="6.25" Y="5.5" Width="2" />
+    <Compartments>
+      <Compartment Name="Nested Types" Collapsed="false" />
+    </Compartments>
+    <NestedTypes>
+      <Class Name="Analytics.Data.Visitor.Dimensions">
+        <TypeIdentifier>
+          <NewMemberFileName>Data\System\Visitor.cs</NewMemberFileName>
+        </TypeIdentifier>
+      </Class>
+      <Class Name="Analytics.Data.Visitor.Metrics">
+        <NestedTypes>
+          <Class Name="Analytics.Data.Visitor.Metrics.Calculated" Collapsed="true">
+            <TypeIdentifier>
+              <NewMemberFileName>Data\System\Visitor.cs</NewMemberFileName>
+            </TypeIdentifier>
+          </Class>
+        </NestedTypes>
+        <TypeIdentifier>
+          <NewMemberFileName>Data\System\Visitor.cs</NewMemberFileName>
+        </TypeIdentifier>
+      </Class>
+    </NestedTypes>
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Data\System\Visitor.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Analytics.Resources.DataResource" Collapsed="true">
+    <Position X="4" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAABEAAAAQAAAAAAIAAAAAAAAIA=</HashCode>
+    </TypeIdentifier>
+  </Class>
+  <Enum Name="Analytics.Data.ItemType">
+    <Position X="3.75" Y="9.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAIIAAAAAAAACAAAAAAAAAAA=</HashCode>
+      <FileName>Data\ItemType.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>

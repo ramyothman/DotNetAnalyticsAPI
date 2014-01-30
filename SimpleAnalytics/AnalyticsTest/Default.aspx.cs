@@ -13,22 +13,22 @@ namespace AnalyticsTest
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            
-            Analytics.AnalyticsManager manager = new Analytics.AnalyticsManager(Server.MapPath("~/bin/privatekey.p12"), "YOUR_EMAIL");
-            manager.LoadAnalyticsProfiles();
+
+            Analytics.AnalyticsManager manager = new Analytics.AnalyticsManager(Server.MapPath("~/bin/privatekey.p12"), "600980447623-ide8u9tp3ud9ven0v640r64hqn0cb7pr@developer.gserviceaccount.com");
 
             //that's the number after the p in google analytics url
             //ps. you need to give your email account taken from the service access from the web control panel in google analytics
+            manager.LoadAnalyticsProfiles();
             manager.SetDefaultAnalyticProfile("80425770");
             List<Analytics.Data.DataItem> metrics = new List<Analytics.Data.DataItem>();
-            metrics.Add(Analytics.Data.Visitor.Metrics.visitors);
             metrics.Add(Analytics.Data.Session.Metrics.visits);
+            
+
             List<Analytics.Data.DataItem> dimensions = new List<Analytics.Data.DataItem>();
             dimensions.Add(Analytics.Data.GeoNetwork.Dimensions.country);
-            dimensions.Add(Analytics.Data.GeoNetwork.Dimensions.city);
 
             
-            System.Data.DataTable table = manager.GetGaDataTable(DateTime.Today.AddDays(-3), DateTime.Today, metrics, dimensions, null, metrics);
+            System.Data.DataTable table = manager.GetGaDataTable(DateTime.Today.AddDays(-3), DateTime.Today, metrics);
             GridViewControl.DataSource = table;
             GridViewControl.DataBind();
         }

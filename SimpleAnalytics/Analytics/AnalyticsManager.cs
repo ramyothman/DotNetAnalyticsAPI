@@ -197,11 +197,14 @@ namespace Analytics
         private System.Data.DataTable BuildTableColumns(List<Data.DataItem> metricsList, List<Data.DataItem> dimensionsList)
         {
             System.Data.DataTable table = new System.Data.DataTable();
-            foreach (Data.DataItem item in dimensionsList)
+            if (dimensionsList != null)
             {
-                System.Data.DataColumn column = new System.Data.DataColumn(item.Name, item.Type);
-                column.Caption = item.WebViewName;
-                table.Columns.Add(column);
+                foreach (Data.DataItem item in dimensionsList)
+                {
+                    System.Data.DataColumn column = new System.Data.DataColumn(item.Name, item.Type);
+                    column.Caption = item.WebViewName;
+                    table.Columns.Add(column);
+                }
             }
 
             foreach (Data.DataItem item in metricsList)
