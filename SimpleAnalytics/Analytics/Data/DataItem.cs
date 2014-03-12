@@ -68,14 +68,17 @@ namespace Analytics.Data
                 {
                     case "STRING":
                         return typeof(string);
-                    case "TIME":
+                    case "DATE":
+                    case "DATETIME":
                         return typeof(DateTime);
                     case "INTEGER":
                         return typeof(int);
+                    case "TIME":
                     case "PERCENT":
                     case "FLOAT":
                     case "CURRENCY":
                         return typeof(decimal);
+                    
                 }
                 return typeof(string);
             }
@@ -141,6 +144,20 @@ namespace Analytics.Data
             foreach (DataItem item in list)
             {
                 result += item.APICommand + ",";
+            }
+            if (!string.IsNullOrEmpty(result))
+                result = result.Remove(result.Length - 1, 1);
+            return result;
+
+        }
+
+        public static string GetString(List<Data.DataItem> list,string specialChar)
+        {
+            string result = "";
+            if (list == null) return result;
+            foreach (DataItem item in list)
+            {
+                result += specialChar + item.APICommand + ",";
             }
             if (!string.IsNullOrEmpty(result))
                 result = result.Remove(result.Length - 1, 1);

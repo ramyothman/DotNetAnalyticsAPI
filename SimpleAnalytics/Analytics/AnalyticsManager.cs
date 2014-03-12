@@ -18,8 +18,8 @@ namespace Analytics
         public Google.Apis.Analytics.v3.AnalyticsService analyticsService;
         bool IsInitialized = false;
 
-        public List<Google.Apis.Analytics.v3.Data.Profile> Profiles {get; set;}
-        public Google.Apis.Analytics.v3.Data.Profile DefaultProfile { set; get; }
+        public  List<Google.Apis.Analytics.v3.Data.Profile> Profiles {get; set;}
+        public  Google.Apis.Analytics.v3.Data.Profile DefaultProfile { set; get; }
         public bool InitFailed { get; set; }
         public Exception FailureException { get; set; }
 
@@ -100,6 +100,10 @@ namespace Analytics
             }
         }
 
+        public bool HasProfile()
+        {
+            return DefaultProfile != null;
+        }
         public void SetDefaultAnalyticProfile(string profileId)
         {
             var profile = (from p in Profiles where p.Id == profileId select p).FirstOrDefault();
@@ -166,27 +170,31 @@ namespace Analytics
 
         public System.Data.DataTable GetGaDataTable(DateTime startDate, DateTime endDate, List<Data.DataItem> metricsList)
         {
-            return GetGaDataTable(startDate, endDate, metricsList, null, null, null, null, null, null, null, null, null);
+            return GetGaDataTable(startDate, endDate, metricsList, null, null, null, null, null, null, null,false, null, null);
         }
-        public System.Data.DataTable GetGaDataTable(DateTime startDate, DateTime endDate, List<Data.DataItem> metricsList, List<Data.DataItem> sortList)
+        public System.Data.DataTable GetGaDataTable(DateTime startDate, DateTime endDate, List<Data.DataItem> metricsList, List<Data.DataItem> sortList,bool ascending)
         {
-            return GetGaDataTable(startDate, endDate, metricsList, null, null, null, null, null, null, sortList, null, null);
+            return GetGaDataTable(startDate, endDate, metricsList, null, null, null, null, null, null, sortList,ascending, null, null);
         }
-        public System.Data.DataTable GetGaDataTable(DateTime startDate, DateTime endDate, List<Data.DataItem> metricsList, List<Data.DataItem> dimensionsList, List<Data.DataItem> filtersList, List<Data.DataItem> sortList)
+        public System.Data.DataTable GetGaDataTable(DateTime startDate, DateTime endDate, List<Data.DataItem> metricsList, List<Data.DataItem> dimensionsList, List<Data.DataItem> filtersList, List<Data.DataItem> sortList,bool ascending)
         {
-            return GetGaDataTable(startDate, endDate, metricsList, dimensionsList, filtersList, null, null, null, null, sortList, null, null);
+            return GetGaDataTable(startDate, endDate, metricsList, dimensionsList, filtersList, null, null, null, null, sortList,ascending, null, null);
         }
-        public System.Data.DataTable GetGaDataTable(DateTime startDate, DateTime endDate, List<Data.DataItem> metricsList, List<Data.DataItem> dimensionsList, List<Data.DataItem> filtersList, Google.Apis.Analytics.v3.DataResource.GaResource.GetRequest.SamplingLevelEnum? samplingLevel, List<Data.DataItem> sortList, List<Data.DataItem> fields)
+        public System.Data.DataTable GetGaDataTable(DateTime startDate, DateTime endDate, List<Data.DataItem> metricsList, List<Data.DataItem> dimensionsList, List<Data.DataItem> filtersList, Google.Apis.Analytics.v3.DataResource.GaResource.GetRequest.SamplingLevelEnum? samplingLevel, List<Data.DataItem> sortList,bool ascending, List<Data.DataItem> fields)
         {
-            return GetGaDataTable(startDate, endDate, metricsList, dimensionsList, filtersList, null, null, samplingLevel, null, sortList, null, fields);
+            return GetGaDataTable(startDate, endDate, metricsList, dimensionsList, filtersList, null, null, samplingLevel, null, sortList,ascending, null, fields);
         }
 
-        public System.Data.DataTable GetGaDataTable(DateTime startDate, DateTime endDate, List<Data.DataItem> metricsList, List<Data.DataItem> dimensionsList, List<Data.DataItem> filtersList, int? maxResults, Google.Apis.Analytics.v3.DataResource.GaResource.GetRequest.OutputEnum? output, Google.Apis.Analytics.v3.DataResource.GaResource.GetRequest.SamplingLevelEnum? samplingLevel, List<Data.DataItem> segmentList, List<Data.DataItem> sortList, int? startIndex, List<Data.DataItem> fieldsList)
+        public System.Data.DataTable GetGaDataTable(DateTime startDate, DateTime endDate, List<Data.DataItem> metricsList, List<Data.DataItem> dimensionsList, List<Data.DataItem> filtersList, int? maxResults, Google.Apis.Analytics.v3.DataResource.GaResource.GetRequest.OutputEnum? output, Google.Apis.Analytics.v3.DataResource.GaResource.GetRequest.SamplingLevelEnum? samplingLevel, List<Data.DataItem> segmentList, List<Data.DataItem> sortList,bool ascending, int? startIndex, List<Data.DataItem> fieldsList)
         {
             if (DefaultProfile == null)
                 throw new Exception("Please set a default profile first using SetDefaultAnalyticProfile method");
-            
-            Google.Apis.Analytics.v3.Data.GaData gaData = GetGaData("ga:" + DefaultProfile.Id, startDate, endDate, Data.DataItem.GetString(metricsList), Data.DataItem.GetString(dimensionsList), Data.DataItem.GetString(filtersList), maxResults, output, samplingLevel, Data.DataItem.GetString(segmentList), Data.DataItem.GetString(sortList), startIndex, Data.DataItem.GetString(fieldsList));
+            string sort = "";
+            if(ascending)
+                sort = Data.DataItem.GetString(sortList);
+            else
+                sort = Data.DataItem.GetString(sortList, "-");
+            Google.Apis.Analytics.v3.Data.GaData gaData = GetGaData("ga:" + DefaultProfile.Id, startDate, endDate, Data.DataItem.GetString(metricsList), Data.DataItem.GetString(dimensionsList), Data.DataItem.GetString(filtersList), maxResults, output, samplingLevel, Data.DataItem.GetString(segmentList), sort , startIndex, Data.DataItem.GetString(fieldsList));
             System.Data.DataTable table = BuildTableColumns(metricsList, dimensionsList);
             if(gaData != null)
                 table = BuildTableRows(gaData, table);
@@ -219,7 +227,6 @@ namespace Analytics
 
         private System.Data.DataTable BuildTableRows(Google.Apis.Analytics.v3.Data.GaData gaData, System.Data.DataTable table)
         {
-
             foreach (var ls in gaData.Rows)
             {
                 System.Data.DataRow row = table.NewRow();
@@ -232,7 +239,6 @@ namespace Analytics
             return table;
         }
         #endregion
-
 
     }
 }

@@ -22,8 +22,8 @@ namespace AnalyticsTest
             manager.SetDefaultAnalyticProfile("80425770");
             List<Analytics.Data.DataItem> metrics = new List<Analytics.Data.DataItem>();
             metrics.Add(Analytics.Data.Session.Metrics.visits);
-            
-
+            metrics.Add(Analytics.Data.Session.Metrics.timeOnSite);
+            metrics.Add(Analytics.Data.Adsense.Metrics.adsenseRevenue);
             List<Analytics.Data.DataItem> dimensions = new List<Analytics.Data.DataItem>();
             dimensions.Add(Analytics.Data.GeoNetwork.Dimensions.country);
 
