@@ -194,7 +194,7 @@ namespace Analytics
                 sort = Data.DataItem.GetString(sortList);
             else
                 sort = Data.DataItem.GetString(sortList, "-");
-            Google.Apis.Analytics.v3.Data.GaData gaData = GetGaData("ga:" + DefaultProfile.Id, startDate, endDate, Data.DataItem.GetString(metricsList), Data.DataItem.GetString(dimensionsList), Data.DataItem.GetString(filtersList), maxResults, output, samplingLevel, Data.DataItem.GetString(segmentList), sort , startIndex, Data.DataItem.GetString(fieldsList));
+            Google.Apis.Analytics.v3.Data.GaData gaData = GetGaData("ga:" + DefaultProfile.Id, startDate, endDate, Data.DataItem.GetString(metricsList), Data.DataItem.GetString(dimensionsList), Data.DataItem.GetStringFilter(filtersList), maxResults, output, samplingLevel, Data.DataItem.GetString(segmentList), sort, startIndex, Data.DataItem.GetString(fieldsList));
             System.Data.DataTable table = BuildTableColumns(metricsList, dimensionsList);
             if(gaData != null)
                 table = BuildTableRows(gaData, table);

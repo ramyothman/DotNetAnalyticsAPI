@@ -27,8 +27,11 @@ namespace AnalyticsTest
             List<Analytics.Data.DataItem> dimensions = new List<Analytics.Data.DataItem>();
             dimensions.Add(Analytics.Data.GeoNetwork.Dimensions.country);
 
-            
-            System.Data.DataTable table = manager.GetGaDataTable(DateTime.Today.AddDays(-3), DateTime.Today, metrics);
+            List<Analytics.Data.DataItem> filters = new List<Analytics.Data.DataItem>();
+            Analytics.Data.DataItem country = new Analytics.Data.DataItem(Analytics.Data.GeoNetwork.Dimensions.country.Name);
+            country.Equals("Saudi Arabia");
+            filters.Add(country);
+            System.Data.DataTable table = manager.GetGaDataTable(DateTime.Today.AddDays(-3), DateTime.Today, metrics, dimensions, filters, metrics, true);
             GridViewControl.DataSource = table;
             GridViewControl.DataBind();
         }

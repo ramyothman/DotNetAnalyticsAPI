@@ -11,6 +11,7 @@ namespace Analytics.Data
     public class DataItem
     {
         string name = "";
+        string itemValue = "";
         private static XDocument _document = null;
         public static XDocument Document
         {
@@ -59,6 +60,12 @@ namespace Analytics.Data
             get { return GetResource("DataType"); }
         }
 
+        public string Value
+        {
+            set { itemValue = value; }
+            get { return itemValue; }
+        }
+
         public Type Type
         {
             get
@@ -99,6 +106,7 @@ namespace Analytics.Data
             get { return (ItemType)Convert.ToInt32(GetResourceItemType(name, "Value")); }
         }
 
+        #region Resource Methods
         public string GetResource(string attribute)
         {
             return GetResource(name,attribute);
@@ -137,6 +145,123 @@ namespace Analytics.Data
             return new Data.DataItem(command.Replace("ga:", ""));
         }
 
+        #endregion
+
+        #region Filter Methods
+        public static void And(DataItem item)
+        {
+            item.Value = ";" + item.Value;
+        }
+
+        public static void Or(DataItem item)
+        {
+            item.Value = "," + item.Value;
+        }
+        public void Equals(string value)
+        {
+            Value = GetFilterEncoding("==") + GetEncodedValue(value);
+        }
+
+        public void DoesNotEqual(string value)
+        {
+            Value = GetFilterEncoding("==") + GetEncodedValue(value);
+        }
+
+        #region Metrics Filter Methods
+        public void GreaterThan(string value)
+        {
+            Value = GetFilterEncoding(">") + GetEncodedValue(value);
+        }
+
+        public void GreaterThanOrEqual(string value)
+        {
+            Value = GetFilterEncoding(">=") + GetEncodedValue(value);
+        }
+
+        public void LessThan(string value)
+        {
+            Value = GetFilterEncoding("<") + GetEncodedValue(value);
+        }
+
+        public void LessThanOrEqual(string value)
+        {
+            Value = GetFilterEncoding("<=") + GetEncodedValue(value);
+        }
+
+
+        #endregion
+
+        #region Dimension Filter Methods
+        public void Contains(string value)
+        {
+            Value = GetFilterEncoding("=@") + GetEncodedValue(value);
+        }
+
+        public void DoesNotContains(string value)
+        {
+            Value = GetFilterEncoding("!@") + GetEncodedValue(value);
+        }
+
+        public void ContainsRegex(string value)
+        {
+            Value = GetFilterEncoding("=~") + GetEncodedValue(value);
+        }
+
+        public void DoesNotContainsRegex(string value)
+        {
+            Value = GetFilterEncoding("!~") + GetEncodedValue(value);
+        }
+
+        #endregion
+
+        #endregion
+
+
+        #region Get String
+        private string GetFilterEncoding(string filter)
+        {
+            string result = filter;
+            //switch (filter)
+            //{
+            //    case "==":
+            //        result = "%3D%3D";
+            //        break;
+            //    case "!=":
+            //        result = "!%3D";
+            //        break;
+            //    case ">":
+            //        result = "%3E";
+            //        break;
+            //    case "<":
+            //        result = "%3C";
+            //        break;
+            //    case ">=":
+            //        result = "%3E%3D";
+            //        break;
+            //    case "<=":
+            //        result = "%3C%3D";
+            //        break;
+            //    case "=@":
+            //        result = "%3D@";
+            //        break;
+            //    case "!@":
+            //        result = "!@";
+            //        break;
+            //    case "=~":
+            //        result = "%3D~";
+            //        break;
+            //    case "!~":
+            //        result = "!~";
+            //        break;
+            //}
+            return result;
+        }
+
+        private string GetEncodedValue(string value)
+        {
+            return value;
+            //return value.Replace("\\", "\\\\").Replace(",", "\\,").Replace(";", "\\;").Replace("&", "%26").Replace(" ", "%20");
+        }
         public static string GetString(List<Data.DataItem> list)
         {
             string result = "";
@@ -151,6 +276,18 @@ namespace Analytics.Data
 
         }
 
+        public static string GetStringFilter(List<Data.DataItem> list)
+        {
+            string result = "";
+            if (list == null) return result;
+            foreach (DataItem item in list)
+            {
+                result += item.APICommand + item.Value + ";";
+            }
+            if (!string.IsNullOrEmpty(result))
+                result = result.Remove(result.Length - 1, 1);
+            return result;
+        }
         public static string GetString(List<Data.DataItem> list,string specialChar)
         {
             string result = "";
@@ -164,5 +301,6 @@ namespace Analytics.Data
             return result;
 
         }
+        #endregion
     }
 }
