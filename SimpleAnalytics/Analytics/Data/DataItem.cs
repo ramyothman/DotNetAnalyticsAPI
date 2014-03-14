@@ -83,9 +83,9 @@ namespace Analytics.Data
                     case "TIME":
                     case "PERCENT":
                     case "FLOAT":
-                    case "CURRENCY":
                         return typeof(decimal);
-                    
+                    case "CURRENCY":
+                        return typeof(double);
                 }
                 return typeof(string);
             }
