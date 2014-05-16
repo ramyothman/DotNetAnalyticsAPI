@@ -1,4 +1,4 @@
-﻿using Google.Apis.Auth.OAuth2;
+using Google.Apis.Auth.OAuth2;
 using Google.Apis.Services;
 using System;
 using System.Collections.Generic;
@@ -22,6 +22,20 @@ namespace Analytics
         public  Google.Apis.Analytics.v3.Data.Profile DefaultProfile { set; get; }
         public bool InitFailed { get; set; }
         public Exception FailureException { get; set; }
+
+        /// <summary>
+        /// Lets you enforce per-user quotas when calling the API from a server-side application, based on IP.
+        /// 
+        /// Ignored if QuotaUser is set
+        /// </summary>
+        public string UserIp { get; set; }
+
+        /// <summary>
+        /// Lets you enforce per-user quotas from a server-side application even in cases when the user's IP address is unknown.
+        /// 
+        /// You can choose any arbitrary string that uniquely identifies a user, but it is limited to 40 characters.
+        /// </summary>
+        public string QuotaUser { get; set; }
 
         #endregion
 
@@ -134,6 +148,8 @@ namespace Analytics
         public Google.Apis.Analytics.v3.Data.GaData GetGaData(string profileid, DateTime startDate, DateTime endDate, string metrics, string dimensions, string filters, int? maxResults, Google.Apis.Analytics.v3.DataResource.GaResource.GetRequest.OutputEnum? output, Google.Apis.Analytics.v3.DataResource.GaResource.GetRequest.SamplingLevelEnum? samplingLevel, string segment, string sort, int? startIndex, string fields)
         {
             Google.Apis.Analytics.v3.Data.GaData data = null;
+
+            
             try
             {
                 Google.Apis.Analytics.v3.DataResource.GaResource.GetRequest request = analyticsService.Data.Ga.Get(profileid, startDate.ToString("yyyy-MM-dd"), endDate.ToString("yyyy-MM-dd"), metrics);
@@ -155,6 +171,11 @@ namespace Analytics
                     request.Sort = sort;
                 if(!string.IsNullOrEmpty(fields))
                     request.Fields = fields;
+                if (!string.IsNullOrEmpty(this.UserIp))
+                    request.UserIp = this.UserIp;
+                if (!string.IsNullOrEmpty(this.QuotaUser))
+                    request.QuotaUser = this.QuotaUser;
+
                 data = request.Execute();
             }
             catch (Exception ex)
