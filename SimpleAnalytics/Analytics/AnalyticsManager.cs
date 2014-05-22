@@ -4,6 +4,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Linq.Expressions;
+using System.Globalization;
 using System.Security.Cryptography.X509Certificates;
 using System.Text;
 using System.Threading.Tasks;
@@ -54,7 +55,7 @@ namespace Analytics
         {
             if (!IsInitialized)
             {
-                var certificate = new X509Certificate2(certificateKeyPath, "notasecret", X509KeyStorageFlags.Exportable);
+                var certificate = new X509Certificate2(certificateKeyPath, "notasecret", X509KeyStorageFlags.Exportable | X509KeyStorageFlags.MachineKeySet);
                 string x = certificate.IssuerName.Name;
                 credential = new ServiceAccountCredential(new ServiceAccountCredential.Initializer(apiEmail)
                 {
@@ -253,7 +254,14 @@ namespace Analytics
                 System.Data.DataRow row = table.NewRow();
                 for(int i = 0; i < ls.Count(); i++)
                 {
-                    row[i] = ls[i];
+                    if (table.Columns[i].DataType == typeof(DateTime))
+                    {
+                        row[i] = DateTime.ParseExact(ls[i], "yyyyMMdd", CultureInfo.InvariantCulture);
+                    }
+                    else
+                    {
+                        row[i] = ls[i];
+                    }
                 }
                 table.Rows.Add(row);
             }
