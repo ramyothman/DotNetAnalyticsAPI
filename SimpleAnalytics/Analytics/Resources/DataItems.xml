@@ -399,7 +399,7 @@ https://support.google.com/adwords/answer/2472708?hl=en
   </DataCategory>
   <DataCategory Name="Time">
     <ItemType Name="Dimensions" Value="1">
-      <DataItem Name="date" APICommand="ga:date" WebViewName="Date" AppViewName="" DataType="STRING" AllowedInSegments="False">The date of the visit formatted as YYYYMMDD.</DataItem>
+      <DataItem Name="date" APICommand="ga:date" WebViewName="Date" AppViewName="" DataType="DATE" AllowedInSegments="False">The date of the visit formatted as YYYYMMDD.</DataItem>
       <DataItem Name="year" APICommand="ga:year" WebViewName="Year" AppViewName="" DataType="STRING" AllowedInSegments="False">The year of the visit. A four-digit year from 2005 to the current year.</DataItem>
       <DataItem Name="month" APICommand="ga:month" WebViewName="Month of the year" AppViewName="" DataType="STRING" AllowedInSegments="False">The month of the visit. A two digit integer from 01 to 12.</DataItem>
       <DataItem Name="week" APICommand="ga:week" WebViewName="Week of the Year" AppViewName="" DataType="STRING" AllowedInSegments="False">The week of the visit. A two-digit number from 01 to 53. Each week starts on Sunday.</DataItem>
