@@ -249,6 +249,8 @@ namespace Analytics
 
         private System.Data.DataTable BuildTableRows(Google.Apis.Analytics.v3.Data.GaData gaData, System.Data.DataTable table)
         {
+            if (gaData.Rows == null) return table;
+
             foreach (var ls in gaData.Rows)
             {
                 System.Data.DataRow row = table.NewRow();
