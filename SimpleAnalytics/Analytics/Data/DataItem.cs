@@ -179,7 +179,7 @@ namespace Analytics.Data
 
         public void DoesNotEqual(string value)
         {
-            Value = GetFilterEncoding("==") + GetEncodedValue(value);
+            Value = GetFilterEncoding("!=") + GetEncodedValue(value);
         }
 
         #region Metrics Filter Methods
