@@ -94,7 +94,8 @@
             this.webBrowser1.Location = new System.Drawing.Point(0, 0);
             this.webBrowser1.Size = new System.Drawing.Size(971, 709);
             this.webBrowser1.TabIndex = 0;
-            this.webBrowser1.DocumentReady += new Awesomium.Core.UrlEventHandler(this.Awesomium_Windows_Forms_WebControl_DocumentReady);
+            
+            this.webBrowser1.DocumentReady += new Awesomium.Core.DocumentReadyEventHandler(this.Awesomium_Windows_Forms_WebControl_DocumentReady);
             this.webBrowser1.LoadingFrameComplete += new Awesomium.Core.FrameEventHandler(this.Awesomium_Windows_Forms_WebControl_LoadingFrameComplete);
             // 
             // webSessionProvider1
