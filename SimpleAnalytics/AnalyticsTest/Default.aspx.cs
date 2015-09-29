@@ -13,7 +13,7 @@ namespace AnalyticsTest
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            int x = 0;
+
             Analytics.AnalyticsManager manager = new Analytics.AnalyticsManager(Server.MapPath("~/bin/privatekey.p12"), "600980447623-ide8u9tp3ud9ven0v640r64hqn0cb7pr@developer.gserviceaccount.com");
 
             //that's the number after the p in google analytics url
