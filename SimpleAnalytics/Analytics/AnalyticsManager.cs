@@ -21,8 +21,16 @@ namespace Analytics
 
         public  List<Google.Apis.Analytics.v3.Data.Profile> Profiles {get; set;}
         public  Google.Apis.Analytics.v3.Data.Profile DefaultProfile { set; get; }
+
+        public List<Google.Apis.Analytics.v3.Data.Account> Accounts { get; set; }
+        public Google.Apis.Analytics.v3.Data.Account DefaultAccount { set; get; }
+
+        public List<Google.Apis.Analytics.v3.Data.CustomDimension> CustomDimensions { set; get; }
+        public List<Google.Apis.Analytics.v3.Data.CustomMetric> CustomMetrics { set; get; }
         public bool InitFailed { get; set; }
         public Exception FailureException { get; set; }
+
+        private string ApplicationName = "Default";
 
         /// <summary>
         /// Lets you enforce per-user quotas when calling the API from a server-side application, based on IP.
@@ -51,6 +59,12 @@ namespace Analytics
             InitializeService(certificateKeyPath, apiEmail);
         }
 
+        public AnalyticsManager(string certificateKeyPath, string apiEmail, string applicationName)
+        {
+            this.ApplicationName = applicationName;
+            InitializeService(certificateKeyPath, apiEmail);
+        }
+
         public void InitializeService(string certificateKeyPath, string apiEmail)
         {
             if (!IsInitialized)
@@ -59,13 +73,13 @@ namespace Analytics
                 string x = certificate.IssuerName.Name;
                 credential = new ServiceAccountCredential(new ServiceAccountCredential.Initializer(apiEmail)
                 {
-                    Scopes = new[] { Google.Apis.Analytics.v3.AnalyticsService.Scope.Analytics }
+                    Scopes = new[] { Google.Apis.Analytics.v3.AnalyticsService.Scope.Analytics, Google.Apis.Analytics.v3.AnalyticsService.Scope.AnalyticsEdit, Google.Apis.Analytics.v3.AnalyticsService.Scope.AnalyticsManageUsers, Google.Apis.Analytics.v3.AnalyticsService.Scope.AnalyticsProvision }
                 }.FromCertificate(certificate));
 
                 analyticsService = new Google.Apis.Analytics.v3.AnalyticsService(new BaseClientService.Initializer()
                 {
                     HttpClientInitializer = credential,
-                    ApplicationName = "Jareeda"
+                    ApplicationName = ApplicationName
                 });
 
                 IsInitialized = true;
@@ -103,6 +117,8 @@ namespace Analytics
         #endregion
 
         #region Management Resource Methods
+
+        #region Analytics Profiles
         public void LoadAnalyticsProfiles()
         {
             Google.Apis.Analytics.v3.ManagementResource.ProfilesResource.ListRequest request = analyticsService.Management.Profiles.List("~all", "~all");
@@ -121,10 +137,208 @@ namespace Analytics
         }
         public void SetDefaultAnalyticProfile(string profileId)
         {
-            var profile = (from p in Profiles where p.Id == profileId select p).FirstOrDefault();
+            var profile = (from p in Profiles where p.WebPropertyId == profileId select p).FirstOrDefault();
             if (profile != null)
                 DefaultProfile = profile;
         }
+
+        #endregion
+
+        #region Analytics Accounts
+        public void LoadAnalyticsAccounts()
+        {
+            Google.Apis.Analytics.v3.ManagementResource.AccountsResource.ListRequest request = analyticsService.Management.Accounts.List();
+            Google.Apis.Analytics.v3.Data.Accounts accounts = request.Execute();
+            if (Accounts == null)
+                Accounts = new List<Google.Apis.Analytics.v3.Data.Account>();
+            foreach (Google.Apis.Analytics.v3.Data.Account p in accounts.Items)
+            {
+                Accounts.Add(p);
+            }
+        }
+
+        public bool HasAccount()
+        {
+            return DefaultAccount != null;
+        }
+        public void SetDefaultAnalyticAccount(string accountId)
+        {
+            var account = (from p in Accounts where p.Id == accountId select p).FirstOrDefault();
+            if (account != null)
+                DefaultAccount = account;
+        }
+        #endregion
+
+        #region Custom Dimensions & Metrics
+
+        #region Custom Dimensions
+        public Management.Data.CustomDimension CreateCustomDimension(string name)
+        {
+            return CreateCustomDimension(name, true);
+        }
+        public Management.Data.CustomDimension CreateCustomDimension(string name,bool isActive)
+        {
+            Google.Apis.Analytics.v3.Data.CustomDimension dimension = new Google.Apis.Analytics.v3.Data.CustomDimension() { Active = isActive, AccountId = DefaultAccount.Id, Name = name, Scope = "HIT", WebPropertyId = DefaultProfile.WebPropertyId };
+            Google.Apis.Analytics.v3.ManagementResource.CustomDimensionsResource.InsertRequest request = analyticsService.Management.CustomDimensions.Insert(dimension, DefaultAccount.Id, DefaultProfile.WebPropertyId);
+            try
+            {
+                dimension = request.Execute();
+                CustomDimensions.Add(dimension);
+                Management.Data.CustomDimension d = new Management.Data.CustomDimension() { Id = dimension.Id, Index = dimension.Index, Name = dimension.Name };
+                
+                return d;
+            }
+            catch(Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+            }
+            return null;
+        }
+
+        public Management.Data.CustomDimension GetCustomDimensionById(string id)
+        {
+            Google.Apis.Analytics.v3.ManagementResource.CustomDimensionsResource.GetRequest request = analyticsService.Management.CustomDimensions.Get(DefaultAccount.Id, DefaultProfile.WebPropertyId, id);
+            try
+            {
+                var dimension = request.Execute();
+                Management.Data.CustomDimension d = new Management.Data.CustomDimension() { Id = dimension.Id, Index = dimension.Index, Name = dimension.Name };
+                return d;
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+            }
+            return null;
+        }
+
+        public void GetCustomDimensions()
+        {
+            Google.Apis.Analytics.v3.ManagementResource.CustomDimensionsResource.ListRequest request = analyticsService.Management.CustomDimensions.List(DefaultAccount.Id, DefaultProfile.WebPropertyId);
+            try
+            {
+                var dimensions = request.Execute();
+                if (CustomDimensions == null)
+                    CustomDimensions = new List<Google.Apis.Analytics.v3.Data.CustomDimension>();
+                foreach(var item in dimensions.Items)
+                {
+                    CustomDimensions.Add(item);
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+            }
+        }
+
+        public Management.Data.CustomDimension GetCustomDimensionByName(string name)
+        {
+            
+            
+            try
+            {
+                if (CustomDimensions == null)
+                    GetCustomDimensions();
+                var dimension = (from x in CustomDimensions where x.Name == name select x).FirstOrDefault();
+                if (dimension != null)
+                {
+                    Management.Data.CustomDimension d = new Management.Data.CustomDimension() { Id = dimension.Id, Index = dimension.Index, Name = dimension.Name };
+                    return d;
+                }
+                else
+                    return null;
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+            }
+            return null;
+        }
+        #endregion
+
+        #region Custom Metrics
+        public Management.Data.CustomMetric CreateCustomMetric(string name)
+        {
+            return CreateCustomMetric(name, true);
+        }
+        public Management.Data.CustomMetric CreateCustomMetric(string name, bool isActive)
+        {
+            Google.Apis.Analytics.v3.Data.CustomMetric dimension = new Google.Apis.Analytics.v3.Data.CustomMetric() { Active = isActive, AccountId = DefaultAccount.Id, Name = name, Scope = "HIT", WebPropertyId = DefaultProfile.WebPropertyId };
+            Google.Apis.Analytics.v3.ManagementResource.CustomMetricsResource.InsertRequest request = analyticsService.Management.CustomMetrics.Insert(dimension, DefaultAccount.Id, DefaultProfile.WebPropertyId);
+            try
+            {
+                dimension = request.Execute();
+                CustomMetrics.Add(dimension);
+                Management.Data.CustomMetric d = new Management.Data.CustomMetric() { Id = dimension.Id, Index = dimension.Index, Name = dimension.Name };
+                return d;
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+            }
+            return null;
+        }
+
+        public Management.Data.CustomMetric GetCustomMetricById(string id)
+        {
+            Google.Apis.Analytics.v3.ManagementResource.CustomMetricsResource.GetRequest request = analyticsService.Management.CustomMetrics.Get(DefaultAccount.Id, DefaultProfile.WebPropertyId, id);
+            try
+            {
+                var dimension = request.Execute();
+                Management.Data.CustomMetric d = new Management.Data.CustomMetric() { Id = dimension.Id, Index = dimension.Index, Name = dimension.Name };
+                return d;
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+            }
+            return null;
+        }
+
+        public void GetCustomMetrics()
+        {
+            Google.Apis.Analytics.v3.ManagementResource.CustomMetricsResource.ListRequest request = analyticsService.Management.CustomMetrics.List(DefaultAccount.Id, DefaultProfile.WebPropertyId);
+            try
+            {
+                var dimensions = request.Execute();
+                if (CustomMetrics == null)
+                    CustomMetrics = new List<Google.Apis.Analytics.v3.Data.CustomMetric>();
+                foreach (var item in dimensions.Items)
+                {
+                    CustomMetrics.Add(item);
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+            }
+        }
+
+        public Management.Data.CustomMetric GetCustomMetricByName(string name)
+        {
+            try
+            {
+                if (CustomMetrics == null)
+                    GetCustomMetrics();
+                var dimension = (from x in CustomMetrics where x.Name == name select x).FirstOrDefault();
+                if (dimension != null)
+                {
+                    Management.Data.CustomMetric d = new Management.Data.CustomMetric() { Id = dimension.Id, Index = dimension.Index, Name = dimension.Name };
+                    return d;
+                }
+                else
+                    return null;
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+            }
+            return null;
+        }
+
+        #endregion
+
+        #endregion
+
         #endregion
 
         #region Data Resource Methods
@@ -270,6 +484,8 @@ namespace Analytics
             return table;
         }
         #endregion
+
+        
 
     }
 }

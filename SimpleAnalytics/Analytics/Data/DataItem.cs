@@ -25,8 +25,23 @@ namespace Analytics.Data
                 return _document;
             }
         }
-        public DataItem(string name)
+		public DataItem(string name)
+		{
+			if (name.Contains("XX")) {
+				throw new ArgumentException("When using metrics with XX in the name, index is required");
+			}
+			this.name = name;
+		}
+		public DataItem(string name, int index)
         {
+			if (index < 1 || index > 20) //some indexes only go to 5
+				throw new ArgumentException("Index must be between 1 and 20", "index");
+			if (name.Contains("XX"))
+	        {
+				name = name.Replace("XX", index.ToString());
+	        }
+			else 
+				throw new ArgumentException("Index only needed for metrics with XX in the name");
             this.name = name;
         }
 
@@ -164,7 +179,7 @@ namespace Analytics.Data
 
         public void DoesNotEqual(string value)
         {
-            Value = GetFilterEncoding("==") + GetEncodedValue(value);
+            Value = GetFilterEncoding("!=") + GetEncodedValue(value);
         }
 
         #region Metrics Filter Methods

@@ -19,6 +19,7 @@ namespace AnalyticsTest
             //that's the number after the p in google analytics url
             //ps. you need to give your email account taken from the service access from the web control panel in google analytics
             manager.LoadAnalyticsProfiles();
+            //Place Profile Web ID
             manager.SetDefaultAnalyticProfile("80425770");
             List<Analytics.Data.DataItem> metrics = new List<Analytics.Data.DataItem>();
             metrics.Add(Analytics.Data.Session.Metrics.visits);
