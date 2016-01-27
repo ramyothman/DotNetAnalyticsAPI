@@ -125,8 +125,6 @@ namespace Analytics
             Google.Apis.Analytics.v3.Data.Profiles profiles = request.Execute();
             if (Profiles == null)
                 Profiles = new List<Google.Apis.Analytics.v3.Data.Profile>();
-            if (profiles.Items.Count == 0)
-                throw new Exception("No profiles found in Analytics Account, you must have an active profile to access.");
             foreach (Google.Apis.Analytics.v3.Data.Profile p in profiles.Items)
             {
                 Profiles.Add(p);
@@ -141,20 +139,7 @@ namespace Analytics
         {
             var profile = (from p in Profiles where p.WebPropertyId == profileId select p).FirstOrDefault();
             if (profile != null)
-            { 
                 DefaultProfile = profile;
-            }
-            else
-            {
-                StringBuilder validProfiles = new StringBuilder();
-
-                Profiles.ForEach(delegate(Google.Apis.Analytics.v3.Data.Profile p)
-                {
-                    validProfiles.AppendLine(p.Name + " - " + p.WebsiteUrl + " - " + p.WebPropertyId);
-                });
-
-                throw new Exception("The profile specified was not found in the profile list. Valid profile ids are: \r\n\r\n" + validProfiles.ToString() + "\r\n\r\nIf the profile you are attempting to load is not in this list, you must give access to the API account in Google Analytics.");
-            }
         }
 
         #endregion
